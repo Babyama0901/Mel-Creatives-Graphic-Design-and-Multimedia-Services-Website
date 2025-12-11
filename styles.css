@@ -1300,6 +1300,15 @@ section {
 .cta-btn {
     padding: 16px 40px;
     font-size: 1rem;
+    margin-bottom: 0;
+    /* Removing bottom margin as it's handled by gap in container now */
+}
+
+.cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
     margin-bottom: 50px;
 }
 
@@ -2079,7 +2088,9 @@ textarea {
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
-}/* =========================================
+}
+
+/* =========================================
    MOBILE RESPONSIVENESS
    ========================================= */
 
