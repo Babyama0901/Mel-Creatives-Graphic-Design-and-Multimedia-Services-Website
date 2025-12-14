@@ -120,10 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "West Esports": "Projects/West Esports - Social Media - Organization - 2024 - 2025.png",
         "Martian Mayhem": "Projects/Martial Mayhem - Social Media - Esports Team - 2024 - 2025.png",
         "Alima Artists' Group": "Projects/Alima Artists' Group - Brand Identity - Organization - 2024 - 2025.png",
-        "Brand Identity Design": "Projects/Artlink App - Brand Identity - 2025.png",
-        "Package Design": "Projects/T-shirt Designs - 2025.png",
-        "Social Media Kit": "Projects/Artlink App - Brand Identity - 2026.png",
-        "Editorial Layout": "Projects/Editorial Spread - Yearbook - 2025.png"
+        "Artlink App": "Projects/Artlink App - Brand Identity - 2025.png",
+        "T-shirt Design": "Projects/T-shirt Designs - 2025.png",
+        "Editorial Spread": "Projects/Editorial Spread - Yearbook - 2025.png"
     };
 
     // Featured
