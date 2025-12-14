@@ -122,7 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "Alima Artists' Group": "Projects/Alima Artists' Group - Brand Identity - Organization - 2024 - 2025.png",
         "Artlink App": "Projects/Artlink App - Brand Identity - 2025.png",
         "T-shirt Design": "Projects/T-shirt Designs - 2025.png",
-        "Editorial Spread": "Projects/Editorial Spread - Yearbook - 2025.png"
+        "Mel Creatives": "Projects/Mel Creatives - Brand Identity - 2025.png",
+        "Editorial Spread": "Projects/Editorial Spread - Yearbook - 2025.png",
+        "Logo Redesign": "Projects/Mel Creatives - Brand Identity - 2025.png"
     };
 
     // Featured
