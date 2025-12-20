@@ -237,31 +237,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (overlayGlass) overlayGlass.addEventListener('click', closeOverlay);
 
     // Content Protection
+    // Content Protection
     document.addEventListener('contextmenu', (e) => {
         e.preventDefault();
         return false;
-        // Additional PrintScreen deterrent
-        document.addEventListener('keyup', (e) => {
-            if (e.key === 'PrintScreen') {
-                try {
-                    navigator.clipboard.writeText(''); // Attempt to clear clipboard
-                } catch (err) {
-                    // Clipboard write failed
-                }
-                alert('Images are protected. Please respect the artist\'s copyright.');
+    });
+
+    // Additional PrintScreen deterrent
+    document.addEventListener('keyup', (e) => {
+        if (e.key === 'PrintScreen') {
+            try {
+                navigator.clipboard.writeText(''); // Attempt to clear clipboard
+            } catch (err) {
+                // Clipboard write failed
             }
-        });
+            alert('Images are protected. Please respect the artist\'s copyright.');
+        }
     });
 
     document.addEventListener('keydown', (e) => {
-        // Prevent Ctrl+S (Save), Ctrl+U (View Source), Ctrl+Shift+I (DevTools), Ctrl+P (Print)
-        if ((e.ctrlKey || e.metaKey || e.key === 'PrintScreen') && (
-            e.key === 's' ||
-            e.key === 'u' ||
-            e.key === 'p' ||
+        // Prevent F12, Ctrl+S, Ctrl+U, Ctrl+Shift+I, Ctrl+P
+        if (
+            e.key === 'F12' ||
             e.key === 'PrintScreen' ||
-            (e.shiftKey && e.key === 'I')
-        )) {
+            ((e.ctrlKey || e.metaKey) && (
+                e.key === 's' ||
+                e.key === 'u' ||
+                e.key === 'p' ||
+                (e.shiftKey && e.key === 'I')
+            ))
+        ) {
             e.preventDefault();
             return false;
         }
