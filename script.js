@@ -237,9 +237,39 @@ document.addEventListener('DOMContentLoaded', () => {
     if (overlayGlass) overlayGlass.addEventListener('click', closeOverlay);
 
     // Content Protection
-    // Content Protection
+    const copyrightDialog = document.getElementById('copyright-dialog');
+    const copyrightOkBtn = document.getElementById('copyright-ok-btn');
+
+    function showCopyrightDialog() {
+        if (copyrightDialog) {
+            copyrightDialog.classList.add('active');
+        } else {
+            alert('Images are protected. Please respect the artist\'s copyright.');
+        }
+    }
+
+    function closeCopyrightDialog() {
+        if (copyrightDialog) {
+            copyrightDialog.classList.remove('active');
+        }
+    }
+
+    if (copyrightOkBtn) {
+        copyrightOkBtn.addEventListener('click', closeCopyrightDialog);
+    }
+
+    // Close on click outside (optional, enhances UX)
+    if (copyrightDialog) {
+        copyrightDialog.addEventListener('click', (e) => {
+            if (e.target === copyrightDialog) {
+                closeCopyrightDialog();
+            }
+        });
+    }
+
     document.addEventListener('contextmenu', (e) => {
         e.preventDefault();
+        showCopyrightDialog();
         return false;
     });
 
@@ -251,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (err) {
                 // Clipboard write failed
             }
-            alert('Images are protected. Please respect the artist\'s copyright.');
+            showCopyrightDialog();
         }
     });
 
