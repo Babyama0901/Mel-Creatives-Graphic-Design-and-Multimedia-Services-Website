@@ -170,31 +170,68 @@ document.addEventListener('DOMContentLoaded', () => {
         overlayCategory.textContent = project.category;
         overlayYear.textContent = project.year;
 
-        // Populate slides (Single Image)
+        // Populate slides (Single Image or Library)
         const container = document.querySelector('.overlay-content-container');
         container.innerHTML = ''; // Clear previous
 
-        const img = document.createElement('img');
-        img.src = project.image;
-        img.alt = `${project.title}`;
-        img.classList.add('overlay-slide');
+        if (project.title === 'Websites') {
+            // Render Website Library Grid
+            const libraryGrid = document.createElement('div');
+            libraryGrid.className = 'library-grid';
 
-        const wrapper = document.createElement('div');
-        // Custom dimensions requested: 1400px width (generalized)
-        wrapper.style.width = '100%';
-        wrapper.style.maxWidth = '1400px';
-        wrapper.style.margin = '0 auto'; // Center it
-        // Removed fixed aspect ratio to allow variable height images
+            const websites = [
+                {
+                    title: 'E-Commerce Platform',
+                    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    link: '#'
+                },
+                {
+                    title: 'Corporate Portfolio',
+                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    link: '#'
+                }
+            ];
 
-        // Strict image styling to ensure it fills the container exactly without duplicate/crop/distortion
-        img.style.width = '100%';
-        img.style.height = 'auto'; // Allow natural height
-        img.style.objectFit = 'contain';
-        img.style.display = 'block';
-        img.style.maxHeight = 'none'; // Override general max-heights
+            websites.forEach(site => {
+                const item = document.createElement('div');
+                item.className = 'library-item';
+                item.innerHTML = `
+                    <div class="library-preview">
+                        <img src="${site.image}" alt="${site.title}">
+                    </div>
+                    <div class="library-info">
+                        <h3>${site.title}</h3>
+                        <a href="${site.link}" class="library-link">View Website ↗</a>
+                    </div>
+                `;
+                libraryGrid.appendChild(item);
+            });
 
-        wrapper.appendChild(img);
-        container.appendChild(wrapper);
+            container.appendChild(libraryGrid);
+        } else {
+            // Standard Single Image Render
+            const img = document.createElement('img');
+            img.src = project.image;
+            img.alt = `${project.title}`;
+            img.classList.add('overlay-slide');
+
+            const wrapper = document.createElement('div');
+            // Custom dimensions requested: 1400px width (generalized)
+            wrapper.style.width = '100%';
+            wrapper.style.maxWidth = '1400px';
+            wrapper.style.margin = '0 auto'; // Center it
+            // Removed fixed aspect ratio to allow variable height images
+
+            // Strict image styling to ensure it fills the container exactly without duplicate/crop/distortion
+            img.style.width = '100%';
+            img.style.height = 'auto'; // Allow natural height
+            img.style.objectFit = 'contain';
+            img.style.display = 'block';
+            img.style.maxHeight = 'none'; // Override general max-heights
+
+            wrapper.appendChild(img);
+            container.appendChild(wrapper);
+        }
 
         currentIndexSpan.textContent = currentProjectIndex + 1;
         if (headerCounter) headerCounter.textContent = `${currentProjectIndex + 1} / ${projects.length}`;
