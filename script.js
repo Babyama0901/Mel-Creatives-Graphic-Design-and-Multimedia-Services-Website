@@ -182,12 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const websites = [
                 {
                     title: 'E-Commerce Platform',
-                    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?fm=jpg&q=60&w=800',
                     link: '#'
                 },
                 {
                     title: 'Corporate Portfolio',
-                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?fm=jpg&q=60&w=800',
                     link: '#'
                 }
             ];
