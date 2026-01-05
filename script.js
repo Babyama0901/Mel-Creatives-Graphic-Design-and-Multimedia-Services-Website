@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "T-shirt Design": "Projects/T-shirt Designs - 2025.png",
         "Mel Creatives": "Projects/Mel Creatives - Brand Identity - 2025.png",
         "Editorial Spread": "Projects/Editorial Spread - Yearbook - 2025.png",
-        "Logo Redesign": "https://plus.unsplash.com/premium_photo-1726873328193-2fcde532707f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "Logo Redesign": "Projects/Logo Design.png"
     };
 
     // Featured
