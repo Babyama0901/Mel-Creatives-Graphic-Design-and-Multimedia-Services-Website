@@ -181,14 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const websites = [
                 {
-                    title: 'E-Commerce Platform',
+                    title: 'Pag-Ambit Interactive Web Comic Book',
                     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?fm=jpg&q=60&w=800',
-                    link: 'https://example.com/ecommerce'
+                    link: 'https://babyama0901.github.io/Pag-Ambit-Interactive-Web-Comic-Book/'
                 },
                 {
-                    title: 'Corporate Portfolio',
+                    title: 'Team Lykaions Digital Portfolio',
                     image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?fm=jpg&q=60&w=800',
-                    link: 'https://example.com/portfolio'
+                    link: 'https://babyama0901.github.io/Team-Lykaions---Digital-Portfolio-2025---BSEMC-4A/'
                 }
             ];
 
@@ -197,13 +197,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.className = 'library-item';
                 item.innerHTML = `
                     <div class="library-preview">
-                        <a href="${site.link}" target="_blank" class="library-image-link">
-                            <img src="${site.image}" alt="${site.title}">
-                        </a>
+                        <img src="${site.image}" alt="${site.title}">
                     </div>
                     <div class="library-info">
                         <h3>${site.title}</h3>
-                        <a href="${site.link}" class="library-link" target="_blank">View Website ↗</a>
+                        <a href="${site.link}" class="library-link">View Website ↗</a>
                     </div>
                 `;
                 libraryGrid.appendChild(item);
