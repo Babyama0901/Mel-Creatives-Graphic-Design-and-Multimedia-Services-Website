@@ -183,12 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     title: 'E-Commerce Platform',
                     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?fm=jpg&q=60&w=800',
-                    link: '#'
+                    link: 'https://example.com/ecommerce'
                 },
                 {
                     title: 'Corporate Portfolio',
                     image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?fm=jpg&q=60&w=800',
-                    link: '#'
+                    link: 'https://example.com/portfolio'
                 }
             ];
 
@@ -197,11 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.className = 'library-item';
                 item.innerHTML = `
                     <div class="library-preview">
-                        <img src="${site.image}" alt="${site.title}">
+                        <a href="${site.link}" target="_blank" class="library-image-link">
+                            <img src="${site.image}" alt="${site.title}">
+                        </a>
                     </div>
                     <div class="library-info">
                         <h3>${site.title}</h3>
-                        <a href="${site.link}" class="library-link">View Website ↗</a>
+                        <a href="${site.link}" class="library-link" target="_blank">View Website ↗</a>
                     </div>
                 `;
                 libraryGrid.appendChild(item);
