@@ -86,7 +86,9 @@ header {
     display: flex;
     align-items: center;
     transition: all 0.3s ease;
-    margin-left: -80px;
+    margin-left: 0;
+    flex: 1 0 0%;
+    justify-content: flex-start;
 }
 
 .logo-link:hover {
@@ -104,16 +106,29 @@ header {
     filter: brightness(1.2);
 }
 
+.nav-menu {
+    flex: 0 0 auto;
+}
+
 .nav-menu ul {
     display: flex;
     align-items: center;
     gap: 40px;
-    margin-right: -80px;
+    margin-right: 0;
 }
 
 /* Centered nav with closer buttons */
 .nav-menu.nav-menu-centered ul {
     gap: 12px;
+    margin-right: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    flex: 1 0 0%;
 }
 
 .nav-menu a {
@@ -1836,6 +1851,18 @@ section {
 @media (max-width: 768px) {
     .header-inner {
         padding: 0 10px;
+    }
+
+    .btn-view-portfolio {
+        display: none;
+    }
+
+    .logo-link {
+        flex: none;
+    }
+
+    .header-right {
+        flex: none;
     }
 
     .nav-menu {
