@@ -818,10 +818,23 @@ section {
     color: var(--text-secondary);
 }
 
-/* Responsive grid for 5 cards - 3 on first row, 2 on second */
-.projects-grid .project-card:nth-child(4),
-.projects-grid .project-card:nth-child(5) {
+/* Responsive grid for 7 cards in a 3-column layout */
+.projects-grid .project-card {
     grid-column: span 1;
+}
+
+@media (min-width: 1025px) {
+    /* Center the 7th card in the 3-column grid */
+    .projects-grid .project-card:nth-child(7):last-child {
+        grid-column: 2 / 3;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 641px) {
+    /* Make the 7th card span full width in a 2-column grid */
+    .projects-grid .project-card:nth-child(7):last-child {
+        grid-column: 1 / 3;
+    }
 }
 
 @media (max-width: 1024px) {
