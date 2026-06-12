@@ -202,7 +202,53 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="library-info">
                         <h3>${site.title}</h3>
-                        <a href="${site.link}" class="library-link">View Website ↗</a>
+                        <a href="${site.link}" class="library-link" target="_blank">View Website ↗</a>
+                    </div>
+                `;
+                libraryGrid.appendChild(item);
+            });
+
+            container.appendChild(libraryGrid);
+        } else if (project.title === 'UI/UX Designs') {
+            // Render UI/UX Designs Grid
+            const libraryGrid = document.createElement('div');
+            libraryGrid.className = 'library-grid';
+
+            const uiuxDesigns = [
+                {
+                    title: 'Hardpoint App',
+                    year: '2024',
+                    tags: 'Mobile Application',
+                    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?fm=jpg&q=60&w=800',
+                    link: 'https://www.figma.com/design/BWyl7jjKEvgWmSIcKNxrWM/EMC-204---Hardpoint-App---Tatud---Garcia?m=auto&t=QrjUIZikJ1oWFETj-6'
+                },
+                {
+                    title: 'Traffic Management Section',
+                    year: '2024',
+                    tags: 'Website Portfolio',
+                    image: 'https://images.unsplash.com/photo-1507238692062-5a042e9e18b4?fm=jpg&q=60&w=800',
+                    link: 'https://www.figma.com/design/kRNfOmbywp8w67q1ux997u/TRAFFIC-MANAGEMENT-SECTION?node-id=1-2&t=Co9cJQGwpzxVTvyD-1'
+                },
+                {
+                    title: 'Mel Creatives',
+                    year: '2025',
+                    tags: 'Website Portfolio',
+                    image: 'https://images.unsplash.com/photo-1555421689-d68471e189f2?fm=jpg&q=60&w=800',
+                    link: 'https://www.figma.com/site/0H35jaLN0YuwsnYk9RoXVb/Mel-Creatives?node-id=0-1&t=3MIPr3MYnQvurHQx-1'
+                }
+            ];
+
+            uiuxDesigns.forEach(design => {
+                const item = document.createElement('div');
+                item.className = 'library-item';
+                item.innerHTML = `
+                    <div class="library-preview">
+                        <img src="${design.image}" alt="${design.title}">
+                    </div>
+                    <div class="library-info">
+                        <h3>${design.title}</h3>
+                        <p style="font-size: 0.9rem; color: #888; margin: 5px 0;">${design.year} • ${design.tags}</p>
+                        <a href="${design.link}" class="library-link" target="_blank">View Figma Project ↗</a>
                     </div>
                 `;
                 libraryGrid.appendChild(item);
