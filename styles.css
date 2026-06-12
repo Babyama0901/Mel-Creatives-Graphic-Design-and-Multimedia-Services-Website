@@ -117,9 +117,9 @@ header {
     margin-right: 0;
 }
 
-/* Centered nav with closer buttons */
+/* Centered nav with distributed spacing */
 .nav-menu.nav-menu-centered ul {
-    gap: 12px;
+    gap: 40px;
     margin-right: 0;
 }
 
@@ -159,6 +159,19 @@ header {
     box-shadow:
         0 4px 24px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Highlighted View Portfolio Button */
+.btn-view-portfolio {
+    background: var(--accent-color);
+    color: #000 !important;
+    font-weight: 700;
+    border: none;
+}
+.btn-view-portfolio:hover {
+    background: var(--accent-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
 }
 
 .nav-glass-btn::before {
@@ -1623,7 +1636,7 @@ section {
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
