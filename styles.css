@@ -87,7 +87,6 @@ header {
     align-items: center;
     transition: all 0.3s ease;
     margin-left: 0;
-    flex: 1 0 0%;
     justify-content: flex-start;
 }
 
@@ -129,7 +128,6 @@ header {
     align-items: center;
     justify-content: flex-end;
     gap: 16px;
-    flex: 1 0 0%;
 }
 
 .nav-menu a {
