@@ -119,8 +119,9 @@ header {
 
 /* Centered nav with distributed spacing */
 .nav-menu.nav-menu-centered ul {
-    gap: 40px;
+    gap: 16px;
     margin-right: 0;
+    justify-content: center;
 }
 
 .header-right {
