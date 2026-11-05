@@ -19,6 +19,7 @@ Mel-Creatives-Graphic-Design-and-Multimedia-Services-Website/
 ├── sitemap.xml                # SEO sitemap
 ├── Mel_Joseph_Tatud_CV.pdf    # Downloadable Curriculum Vitae
 ├── Logo.png                   # Brand header logo
+├── og-image.jpg               # Open Graph & Twitter social card image (1200x630)
 ├── Mel Creatives Favicon.svg  # SVG browser favicon
 ├── about-mel.jpg              # Profile visual in the About section
 ├── Projects/                  # High-resolution portfolio case study assets
