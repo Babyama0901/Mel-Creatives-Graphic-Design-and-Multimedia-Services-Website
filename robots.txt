@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://melcreatives.vercel.app/sitemap.xml

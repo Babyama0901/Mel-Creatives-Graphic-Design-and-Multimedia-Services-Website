@@ -15,7 +15,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mel Creatives | Graphic Design & Multimedia</title>
     <meta name="description"
-        content="Official Portfolio of Mel Creatives - delivering premium graphic design and multimedia services.">
+        content="Official Portfolio of Mel Creatives - delivering premium brand identity, packaging, and multimedia design solutions by Mel Joseph Tatud.">
+    <link rel="canonical" href="https://melcreatives.vercel.app/">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://melcreatives.vercel.app/">
+    <meta property="og:title" content="Mel Creatives | Graphic Design & Multimedia">
+    <meta property="og:description"
+        content="Brand identity, packaging, and multimedia design by Mel Joseph Tatud. Delivering intuitive digital experiences and bold visual stories.">
+    <meta property="og:image" content="https://melcreatives.vercel.app/Stock%20Images/West%20Esports%20-%20Feature%20Project%201.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://melcreatives.vercel.app/">
+    <meta name="twitter:title" content="Mel Creatives | Graphic Design & Multimedia">
+    <meta name="twitter:description"
+        content="Brand identity, packaging, and multimedia design by Mel Joseph Tatud. Delivering intuitive digital experiences and bold visual stories.">
+    <meta name="twitter:image" content="https://melcreatives.vercel.app/Stock%20Images/West%20Esports%20-%20Feature%20Project%201.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mel Joseph Tatud",
+        "jobTitle": "UI/UX Designer & Multimedia Artist",
+        "url": "https://melcreatives.vercel.app/",
+        "sameAs": [
+            "https://www.behance.net/meljosephtatud",
+            "https://www.linkedin.com/in/meljosephtatud/",
+            "https://www.facebook.com/OfficialMlcrtvs35/"
+        ],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "West Visayas State University"
+        }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -23,16 +62,22 @@
         rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="Mel%20Creatives%20Favicon.svg">
     <link rel="stylesheet" href="styles.css">
+
+    <!-- GSAP & Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 
 <body>
+    <a class="skip-link" href="#projects">Skip to content</a>
+
     <header id="header">
         <div class="container header-inner">
             <a href="#hero" class="logo-link" aria-label="Scroll to top">
-                <img src="Logo.png" alt="Mel Creatives Logo" class="nav-logo">
+                <img src="Logo.png" alt="Mel Creatives Logo" class="nav-logo" width="160" height="40">
             </a>
-            <nav class="nav-menu nav-menu-centered">
+            <nav id="primary-nav" class="nav-menu nav-menu-centered" aria-label="Primary Navigation">
                 <ul>
                     <li><a href="#hero" class="nav-glass-btn">Home</a></li>
                     <li><a href="#projects" class="nav-glass-btn">Work</a></li>
@@ -42,7 +87,7 @@
             </nav>
             <div class="header-right">
                 <a href="#recent-projects" class="nav-glass-btn btn-view-portfolio">View Portfolio</a>
-                <button class="mobile-toggle" aria-label="Toggle Menu">
+                <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </button>
@@ -63,13 +108,13 @@
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
             </div>
-            <div class="hero-bg">
+            <div class="hero-bg" aria-hidden="true">
                 <div class="orb orb-1"></div>
                 <div class="orb orb-2"></div>
             </div>
 
             <!-- Scroll Indicator -->
-            <div class="scroll-indicator fade-in delay-3">
+            <div class="scroll-indicator fade-in delay-3" aria-hidden="true">
                 <div class="scroll-left">
                     <span class="scroll-text">Scroll down</span>
                     <span class="scroll-line"></span>
@@ -85,7 +130,7 @@
                 </div>
             </div>
         </section>
-        <div class="section-divider"></div>
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- 2. Featured Work -->
         <section id="projects" class="work">
@@ -96,26 +141,25 @@
                 </div>
                 <div class="work-grid">
                     <article class="work-item fade-up" data-title="West Esports" data-category="Esports & Gaming"
-                        data-year="2025">
+                        data-year="2025" data-description="Brand identity, visual guidelines, and tournament collateral for university esports organization." tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study for West Esports">
                         <img src="Stock%20Images/West%20Esports%20-%20Feature%20Project%201.png" class="work-thumb"
-                            alt="West Esports" style="height: 400px; object-fit: cover; width: 100%;">
+                            alt="West Esports social media and organization branding graphics" width="800" height="1000">
                         <div class="work-overlay">
                             <span class="btn-case">View Casestudy ↗</span>
                         </div>
                     </article>
                     <article class="work-item fade-up delay-1" data-title="Martian Mayhem" data-category="Esports & Gaming"
-                        data-year="2024">
+                        data-year="2024" data-description="Tournament branding, key art illustration, and broadcast graphics for an esports tournament." tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study for Martian Mayhem">
                         <img src="Stock%20Images/Martian%20Mayhem%20-%20Feature%20Project%202.png" class="work-thumb"
-                            alt="Martian Mayhem" style="height: 500px; object-fit: cover; width: 100%;">
+                            alt="Martian Mayhem esports team social media and tournament key visual" width="800" height="1200">
                         <div class="work-overlay">
                             <span class="btn-case">View Casestudy ↗</span>
                         </div>
                     </article>
                     <article class="work-item fade-up delay-2" data-title="Alima Artists' Group"
-                        data-category="Branding" data-year="2024">
+                        data-category="Branding" data-year="2024" data-description="Comprehensive brand identity, exhibition collateral, and social media presence for fine arts collective." tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study for Alima Artists' Group">
                         <img src="Stock%20Images/Alima%20Artists'%20Group%20-%20Feature%20Project%203.png"
-                            class="work-thumb" alt="Alima Artists' Group"
-                            style="height: 400px; object-fit: cover; width: 100%;">
+                            class="work-thumb" alt="Alima Artists' Group brand identity and exhibition visuals" width="800" height="1000">
                         <div class="work-overlay">
                             <span class="btn-case">View Casestudy ↗</span>
                         </div>
@@ -123,7 +167,7 @@
                 </div>
             </div>
         </section>
-        <div class="section-divider"></div>
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- 3. About Mel -->
         <section id="about" class="about">
@@ -177,20 +221,19 @@
                 </div>
                 <div class="about-visual fade-in delay-1">
                     <div class="profile-image-container">
-                        <img src="about-mel.jpg" class="profile-img-placeholder" alt="Mel">
+                        <img src="about-mel.jpg" class="profile-img-placeholder" alt="Mel Joseph Tatud - UI/UX Designer and Multimedia Artist" width="480" height="600" loading="lazy" decoding="async">
                     </div>
                     <div class="bio-info">
                         <h3>Biography</h3>
                         <ul>
                             <li><span class="bio-label">Nationality:</span> Filipino</li>
                             <li><span class="bio-label">Language:</span> English, Tagalog & Hiligaynon</li>
-                            <li><span class="bio-label">Age:</span> 25 years old</li>
                             <li><span class="bio-label">College:</span> West Visayas State University - Main Campus</li>
                             <li><span class="bio-label">Course:</span> Bachelor of Science in Entertainment and
                                 Multimedia Computing</li>
                         </ul>
                         <a href="Mel_Joseph_Tatud_CV.pdf" class="btn-cv" target="_blank" download>
-                            <span class="cv-icon">⬇</span> Download CV
+                            <span class="cv-icon" aria-hidden="true">⬇</span> Download CV
                         </a>
                     </div>
                 </div>
@@ -206,33 +249,33 @@
                 </div>
 
                 <div class="projects-grid">
-                    <article class="project-card fade-up">
-                        <img src="https://images.unsplash.com/photo-1762330916855-117daacbf851?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            class="project-image" alt="Brand Identity Design">
+                    <article class="project-card fade-up" data-title="Artlink App" data-category="Branding" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View project details for Artlink App">
+                        <img src="Projects/Artlink%20App%20-%20Brand%20Identity%20-%202025.png"
+                            class="project-image" alt="Artlink App - Brand Identity and Mobile Interface Design" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Artlink App</h3>
                             <div class="project-meta">
                                 <span class="project-category">Branding</span>
-                                <span class="project-date">Sept 2025</span>
+                                <span class="project-date">2025</span>
                             </div>
                         </div>
                     </article>
 
-                    <article class="project-card fade-up delay-1">
-                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            class="project-image" alt="Package Design">
+                    <article class="project-card fade-up delay-1" data-title="T-shirt Design" data-category="Apparel Design" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View project details for T-shirt Design">
+                        <img src="Projects/T-shirt%20Designs%20-%202025.png"
+                            class="project-image" alt="Custom apparel and merchandise graphics collection" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">T-shirt Design</h3>
                             <div class="project-meta">
-                                <span class="project-category">Packaging</span>
-                                <span class="project-date">Year 2025</span>
+                                <span class="project-category">Apparel Design</span>
+                                <span class="project-date">2025</span>
                             </div>
                         </div>
                     </article>
 
-                    <article class="project-card fade-up delay-2">
-                        <img src="https://plus.unsplash.com/premium_photo-1752230472741-68e200ed6d88?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            class="project-image" alt="Social Media Kit">
+                    <article class="project-card fade-up delay-2" data-title="Mel Creatives" data-category="Brand Identity" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View project details for Mel Creatives">
+                        <img src="Projects/Mel%20Creatives%20-%20Brand%20Identity%20-%202025.png"
+                            class="project-image" alt="Mel Creatives personal branding and visual identity kit" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Mel Creatives</h3>
                             <div class="project-meta">
@@ -242,21 +285,21 @@
                         </div>
                     </article>
 
-                    <article class="project-card fade-up delay-3">
-                        <img src="https://plus.unsplash.com/premium_photo-1718280319868-7d83d8e977ac?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            class="project-image" alt="Editorial Layout">
+                    <article class="project-card fade-up delay-3" data-title="Editorial Spread" data-category="Editorial Design" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View project details for Editorial Spread">
+                        <img src="Projects/Editorial%20Spread%20-%20Yearbook%20-%202025.png"
+                            class="project-image" alt="Editorial layout and publication spread design for yearbook" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Editorial Spread</h3>
                             <div class="project-meta">
-                                <span class="project-category">Print Design</span>
-                                <span class="project-date">Present</span>
+                                <span class="project-category">Editorial Design</span>
+                                <span class="project-date">2025</span>
                             </div>
                         </div>
                     </article>
 
-                    <article class="project-card fade-up delay-4">
-                        <img src="https://plus.unsplash.com/premium_photo-1726873328193-2fcde532707f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            class="project-image" alt="Logo Redesign">
+                    <article class="project-card fade-up delay-4" data-title="Logo Redesign" data-category="Branding" data-year="2024" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View project details for Logo Redesign">
+                        <img src="Projects/Logo%20Design.png"
+                            class="project-image" alt="Minimalist geometric logo redesign showcase" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Logo Redesign</h3>
                             <div class="project-meta">
@@ -265,21 +308,22 @@
                             </div>
                         </div>
                     </article>
-                    <article class="project-card fade-up delay-2">
+
+                    <article class="project-card fade-up delay-5" data-title="Websites" data-category="Web Development" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View interactive website projects">
                         <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?fm=jpg&q=60&w=800"
-                            class="project-image" alt="Web Design">
+                            class="project-image" alt="Curated interactive web design and digital portfolio projects" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Websites</h3>
                             <div class="project-meta">
-                                <span class="project-category">Web Design</span>
+                                <span class="project-category">Web Development</span>
                                 <span class="project-date">2025</span>
                             </div>
                         </div>
                     </article>
 
-                    <article class="project-card fade-up delay-3">
-                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?fm=jpg&q=60&w=800"
-                            class="project-image" alt="Social Media">
+                    <article class="project-card fade-up delay-6" data-title="Social Media" data-category="Digital Design" data-year="2024" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View social media campaign graphics">
+                        <img src="Projects/West%20Esports%20-%20Social%20Media%20-%20Organization%20-%202024%20-%202025.png"
+                            class="project-image" alt="Social media campaign and promotional graphics for esports organization" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Social Media</h3>
                             <div class="project-meta">
@@ -289,49 +333,13 @@
                         </div>
                     </article>
 
-                    <article class="project-card fade-up delay-4">
-                        <img src="Stock%20Images/Martian%20Mayhem%20-%20Feature%20Project%202.png"
-                            class="project-image" alt="Martian Mayhem">
-                        <div class="project-info">
-                            <h3 class="project-title">Martian Mayhem</h3>
-                            <div class="project-meta">
-                                <span class="project-category">Esports & Gaming</span>
-                                <span class="project-date">2024</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card fade-up delay-5">
-                        <img src="Stock%20Images/Alima%20Artists'%20Group%20-%20Feature%20Project%203.png"
-                            class="project-image" alt="Alima Artists' Group">
-                        <div class="project-info">
-                            <h3 class="project-title">Alima Artists' Group</h3>
-                            <div class="project-meta">
-                                <span class="project-category">Branding</span>
-                                <span class="project-date">2024</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card fade-up delay-6">
-                        <img src="Stock%20Images/West%20Esports%20-%20Feature%20Project%201.png"
-                            class="project-image" alt="West Esports">
-                        <div class="project-info">
-                            <h3 class="project-title">West Esports</h3>
-                            <div class="project-meta">
-                                <span class="project-category">Esports & Gaming</span>
-                                <span class="project-date">2025</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card fade-up delay-7">
+                    <article class="project-card fade-up delay-7" data-title="UI/UX Designs" data-category="UI/UX Design" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Figma UI/UX projects">
                         <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?fm=jpg&q=60&w=800"
-                            class="project-image" alt="UI/UX Designs">
+                            class="project-image" alt="Figma UI/UX design prototypes and application interfaces" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">UI/UX Designs</h3>
                             <div class="project-meta">
-                                <span class="project-category">UI/UX</span>
+                                <span class="project-category">UI/UX Design</span>
                                 <span class="project-date">2025</span>
                             </div>
                         </div>
@@ -339,62 +347,77 @@
                 </div>
             </div>
         </section>
-        <div class="section-divider"></div>
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- 5. Process -->
         <section id="process" class="process">
             <div class="container process-inner">
                 <div class="process-image fade-in">
-                    <img src="Stock%20Images/Design%20Process.jpg" class="process-img-placeholder" alt="Design Process">
+                    <img src="Stock%20Images/Design%20Process.jpg" class="process-img-placeholder" alt="Creative design process and ideation workflow" width="600" height="800" loading="lazy" decoding="async">
                 </div>
                 <div class="process-content">
                     <div class="process-header fade-in">
                         <span class="section-badge">✦ Design process</span>
                         <h2>Process</h2>
-                        <p>crafting bold visuals that inspire and elevate brands with thought process.</p>
+                        <p>Crafting bold visuals that inspire and elevate brands with intentional thought and methodology.</p>
                         <div class="process-btns">
-                            <a href="#contact" class="btn btn-outline-dark">Book a Free Call</a>
-                            <a href="#Projects" class="btn btn-outline-dark">See Projects</a>
+                            <a href="#contact" class="btn btn-outline-dark">Get in Touch</a>
+                            <a href="#projects" class="btn btn-outline-dark">See Projects</a>
                         </div>
                     </div>
 
                     <div class="process-steps">
                         <div class="process-step fade-up">
-                            <div class="step-icon">💡</div>
+                            <div class="step-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                                    <path d="M9 18h6"/>
+                                    <path d="M10 22h4"/>
+                                </svg>
+                            </div>
                             <div class="step-content">
                                 <div class="step-number">1</div>
                                 <h3>Define Your Vision</h3>
-                                <p>Find the perfect plan tailored to your needs, offering the right balance of features,
-                                    flexibility, and value to help you achieve your goals effortlessly.</p>
+                                <p>We begin with an in-depth creative brief and discovery discussion to define your brand goals, target audience, and project scope.</p>
                             </div>
                         </div>
 
                         <div class="process-step fade-up delay-1">
-                            <div class="step-icon">📋</div>
+                            <div class="step-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <polyline points="10 9 9 9 8 9"/>
+                                </svg>
+                            </div>
                             <div class="step-content">
                                 <div class="step-number">2</div>
                                 <h3>Submit Your Request</h3>
-                                <p>Easily submit your design requirements through our private design portal, ensuring a
-                                    seamless process where your vision is understood, refined, and brought to life with
-                                    precision and creativity.</p>
+                                <p>Easily submit your design requirements, references, and project assets directly via email or our service request form to align on expectations.</p>
                             </div>
                         </div>
 
                         <div class="process-step fade-up delay-2">
-                            <div class="step-icon">🎯</div>
+                            <div class="step-icon" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <circle cx="12" cy="12" r="6"/>
+                                    <circle cx="12" cy="12" r="2"/>
+                                </svg>
+                            </div>
                             <div class="step-content">
                                 <div class="step-number">3</div>
                                 <h3>Project Delivered</h3>
-                                <p>As a dedicated freelancer, I ensure your project is completed with precision and
-                                    delivered within 2-3 days. With a keen eye for detail and a passion for quality, I
-                                    bring your vision to life—on time and beyond expectations.</p>
+                                <p>With a keen eye for detail and high standards of craft, I deliver refined, production-ready designs — typically within 2–3 days for small projects and up to 2 weeks for larger scopes.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="section-divider"></div>
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- 6. Services -->
         <section id="services" class="services-new">
@@ -403,11 +426,9 @@
                     <div class="services-header-left fade-in">
                         <span class="section-badge">✦ Design services</span>
                         <h2>Services</h2>
-                        <p>Helping businesses standout with brand identity packaging that captivates and converts
-                            effectively.</p>
+                        <p>Helping businesses stand out with brand identity and packaging that captivates and converts effectively.</p>
 
                         <div class="services-tags">
-                            <span class="tag">Product Design</span>
                             <span class="tag">Brand Identity Design</span>
                             <span class="tag">Branding</span>
                             <span class="tag">Packaging Design</span>
@@ -415,43 +436,39 @@
                         </div>
 
                         <div class="services-btns">
-                            <a href="#contact" class="btn btn-outline-dark">Book a Free Call</a>
-                            <a href="#work" class="btn btn-outline-dark">See Projects</a>
+                            <a href="#contact" class="btn btn-outline-dark">Get in Touch</a>
+                            <a href="#projects" class="btn btn-outline-dark">See Projects</a>
                         </div>
                     </div>
                     <div class="services-header-right fade-in delay-1">
-                        <img src="Stock%20Images/Services.jpg" class="services-img-placeholder" alt="Design Services">
+                        <img src="Stock%20Images/Services.jpg" class="services-img-placeholder" alt="Mel Creatives graphic design and multimedia services" width="600" height="800" loading="lazy" decoding="async">
                     </div>
                 </div>
 
                 <div class="services-cards-grid">
                     <div class="service-card-new fade-up">
-                        <div class="service-icon">✦</div>
+                        <div class="service-icon" aria-hidden="true">✦</div>
                         <h3>Brand Identity</h3>
-                        <p>Crafting unique, memorable brand identities that resonate with your audience — from logos to
-                            visual systems — ensuring every touchpoint reflects your brand's essence.</p>
+                        <p>Crafting unique, memorable brand identities that resonate with your audience — from logos and color palettes to comprehensive visual guidelines.</p>
                     </div>
                     <div class="service-card-new fade-up delay-1">
-                        <div class="service-icon">✦</div>
+                        <div class="service-icon" aria-hidden="true">✦</div>
                         <h3>Brand Design</h3>
-                        <p>Designing sleek, impactful packaging that not only looks stunning but also connects with your
-                            ideal customers — turning first impressions into lasting brand loyalty.</p>
+                        <p>Designing consistent, engaging brand collateral and marketing graphics across print and digital touchpoints to strengthen brand recognition.</p>
                     </div>
                     <div class="service-card-new fade-up delay-2">
-                        <div class="service-icon">◇</div>
+                        <div class="service-icon" aria-hidden="true">◇</div>
                         <h3>Package Design</h3>
-                        <p>Bringing your brand to life through high-fidelity product mockups, giving you a clear,
-                            realistic preview of how your packaging and visuals will stand out in the real world.</p>
+                        <p>Designing sleek, impactful packaging that not only looks stunning but also connects with your ideal customers — turning first impressions into lasting brand loyalty.</p>
                     </div>
                     <div class="service-card-new fade-up delay-3">
-                        <div class="service-icon">◈</div>
+                        <div class="service-icon" aria-hidden="true">◈</div>
                         <h3>Mockup Design</h3>
-                        <p>Tailored design mockups that align perfectly with your brand's aesthetic — because every
-                            detail matters when showcasing your product's true potential.</p>
+                        <p>Bringing your products to life through high-fidelity, realistic 3D and digital mockups, giving you a tangible preview of how your visuals shine in the real world.</p>
                     </div>
                 </div>
 
-                <div class="services-marquee">
+                <div class="services-marquee" aria-hidden="true">
                     <div class="marquee-track">
                         <span class="marquee-tag">✦ Copywriting</span>
                         <span class="marquee-tag">✦ Brand Graphics</span>
@@ -483,7 +500,7 @@
                 </div>
             </div>
         </section>
-        <div class="section-divider"></div>
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- 7. FAQ -->
         <section id="faq" class="faq">
@@ -491,124 +508,115 @@
                 <div class="faq-left fade-in">
                     <span class="section-badge">✦ FAQ'S</span>
                     <h2>Answers</h2>
-                    <p>Find answers to common questions about my design process, services etc...</p>
+                    <p>Find answers to common questions about my design process, services, and collaboration.</p>
 
                     <div class="faq-image">
-                        <img src="Stock%20Images/FAQs.jpg" class="faq-img-placeholder" alt="FAQ">
+                        <img src="Stock%20Images/FAQs.jpg" class="faq-img-placeholder" alt="Answers to frequent questions about design process and collaboration" width="600" height="800" loading="lazy" decoding="async">
                     </div>
 
                     <div class="faq-tags">
-                        <span class="tag">Product Design</span>
-                        <span class="tag">Brand Identity Design</span>
-                        <span class="tag">Branding</span>
+                        <span class="tag">Brand Identity</span>
+                        <span class="tag">Packaging</span>
+                        <span class="tag">UI/UX & Web</span>
                     </div>
 
-                    <a href="#contact" class="btn btn-outline-dark faq-btn">Book a Free Call</a>
+                    <a href="#contact" class="btn btn-outline-dark faq-btn">Get in Touch</a>
                 </div>
 
                 <div class="faq-accordion fade-up">
                     <div class="accordion-item active">
-                        <div class="accordion-header">
+                        <button type="button" class="accordion-header" id="faq-btn-1" aria-expanded="true" aria-controls="faq-panel-1">
                             <span>What services do you provide?</span>
-                            <span class="accordion-icon">×</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>I specialize in brand identity and package design, with experience in web design, UI/UX,
-                                and AI to create brand experiences.</p>
+                            <span class="accordion-icon" aria-hidden="true">×</span>
+                        </button>
+                        <div class="accordion-content" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1">
+                            <p>I specialize in brand identity and package design, with extensive experience in web design, UI/UX, and creative multimedia narratives.</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <div class="accordion-header">
+                        <button type="button" class="accordion-header" id="faq-btn-2" aria-expanded="false" aria-controls="faq-panel-2">
                             <span>How do I start working with you?</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>Simply reach out through the contact form or book a free call. We'll discuss your project
-                                needs and I'll provide a tailored proposal.</p>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-content" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2">
+                            <p>Simply reach out via email or submit the service request form. I'll review your project requirements and provide a tailored proposal.</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <div class="accordion-header">
+                        <button type="button" class="accordion-header" id="faq-btn-3" aria-expanded="false" aria-controls="faq-panel-3">
                             <span>What design tools do you use?</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>I primarily use Adobe Creative Suite (Photoshop, Illustrator, After Effects), Figma for
-                                UI/UX, and various AI tools to enhance workflows.</p>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-content" id="faq-panel-3" role="region" aria-labelledby="faq-btn-3">
+                            <p>I primarily use Adobe Creative Suite (Photoshop, Illustrator, After Effects), Figma for UI/UX prototyping, and modern digital design workflows.</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <div class="accordion-header">
+                        <button type="button" class="accordion-header" id="faq-btn-4" aria-expanded="false" aria-controls="faq-panel-4">
                             <span>How long does a project take?</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>Project timelines vary based on complexity. Most projects are completed within 2-3 days
-                                to 2 weeks. I'll provide a specific timeline during our initial consultation.</p>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-content" id="faq-panel-4" role="region" aria-labelledby="faq-btn-4">
+                            <p>Project timelines vary based on complexity. Small tasks typically take 2–3 days, while comprehensive projects take up to 2 weeks. I'll provide a clear timeline during our initial consultation.</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <div class="accordion-header">
+                        <button type="button" class="accordion-header" id="faq-btn-5" aria-expanded="false" aria-controls="faq-panel-5">
                             <span>Do you provide revisions?</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>Yes, revisions are included in all packages. I work closely with you to ensure the final
-                                design perfectly matches your vision.</p>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-content" id="faq-panel-5" role="region" aria-labelledby="faq-btn-5">
+                            <p>Yes, revisions are included; the number depends on the project scope. I work closely with you to ensure the final design perfectly matches your vision.</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <div class="accordion-header">
+                        <button type="button" class="accordion-header" id="faq-btn-6" aria-expanded="false" aria-controls="faq-panel-6">
                             <span>What industries do you work with?</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>I work with diverse industries including tech startups, e-commerce, healthcare,
-                                education, food & beverage, and creative agencies.</p>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-content" id="faq-panel-6" role="region" aria-labelledby="faq-btn-6">
+                            <p>I work with startups, student organizations, esports teams, creative groups, and small businesses looking to elevate their visual presence.</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <div class="accordion-header">
+                        <button type="button" class="accordion-header" id="faq-btn-7" aria-expanded="false" aria-controls="faq-panel-7">
                             <span>Do you offer development services?</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>While my primary focus is design, I can coordinate with trusted developers or provide
-                                basic front-end implementation for simpler projects.</p>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-content" id="faq-panel-7" role="region" aria-labelledby="faq-btn-7">
+                            <p>While my primary focus is design, I coordinate front-end development and provide clean HTML/CSS/JS implementation for digital products and portfolios.</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <div class="accordion-header">
+                        <button type="button" class="accordion-header" id="faq-btn-8" aria-expanded="false" aria-controls="faq-panel-8">
                             <span>What is your pricing structure?</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>Pricing varies by project scope. I offer both project-based and retainer options. Let's
-                                discuss your needs for a custom quote.</p>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-content" id="faq-panel-8" role="region" aria-labelledby="faq-btn-8">
+                            <p>Pricing varies by project scope and deliverables. I offer both project-based and retainer options tailored to your specific budget and timeline.</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <div class="accordion-header">
+                        <button type="button" class="accordion-header" id="faq-btn-9" aria-expanded="false" aria-controls="faq-panel-9">
                             <span>Can you redesign my existing website?</span>
-                            <span class="accordion-icon">+</span>
-                        </div>
-                        <div class="accordion-content">
-                            <p>Absolutely! I specialize in website redesigns that modernize your online presence while
-                                maintaining brand consistency and improving user experience.</p>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-content" id="faq-panel-9" role="region" aria-labelledby="faq-btn-9">
+                            <p>Absolutely! I specialize in website redesigns that modernize your online presence while maintaining brand consistency and improving user experience.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="section-divider"></div>
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- 8. Contact (New CTA design) -->
         <section id="contact" class="contact-cta">
@@ -623,35 +631,49 @@
                     extraordinary to life!</h2>
 
                 <div class="cta-group fade-in delay-2">
-                    <a href="mailto:melcreatives39@gmail.com" class="btn btn-outline-dark cta-btn">Send a Email</a>
+                    <a href="mailto:melcreatives39@gmail.com" class="btn btn-outline-dark cta-btn">Send an Email</a>
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4rSwsl5LimIEOzUa9K4RfxdIcKXD6KKOMglzXuz2yeNUulw/viewform?usp=dialog"
                         class="btn btn-outline-dark cta-btn" target="_blank" rel="noopener noreferrer">Send a Service
                         Form</a>
                 </div>
 
                 <div class="social-icons fade-in delay-3">
-                    <a href="https://www.behance.net/meljosephtatud" class="social-icon" aria-label="Behance"
+                    <a href="https://www.behance.net/meljosephtatud" class="social-icon" aria-label="Behance profile"
                         target="_blank" rel="noopener noreferrer">Bē</a>
                     <span class="social-divider"></span>
-                    <a href="https://www.facebook.com/OfficialMlcrtvs35/" class="social-icon" aria-label="Facebook"
+                    <a href="https://www.facebook.com/OfficialMlcrtvs35/" class="social-icon" aria-label="Facebook page"
                         target="_blank" rel="noopener noreferrer">Fb</a>
                     <span class="social-divider"></span>
-                    <a href="https://www.linkedin.com/in/meljosephtatud/" class="social-icon" aria-label="LinkedIn"
+                    <a href="https://www.linkedin.com/in/meljosephtatud/" class="social-icon" aria-label="LinkedIn profile"
                         target="_blank" rel="noopener noreferrer">In</a>
                     <span class="social-divider"></span>
-                    <a href="mailto:melcreatives39@gmail.com" class="social-icon" aria-label="Email">@</a>
+                    <a href="mailto:melcreatives39@gmail.com" class="social-icon" aria-label="Send Email">@</a>
                 </div>
             </div>
         </section>
+
+        <!-- Testimonials Scaffold (Hidden until authentic client feedback is added) -->
+        <!-- TODO(owner): Add real client testimonials here when available -->
     </main>
 
     <footer class="footer">
         <div class="container footer-content">
-            <p class="copyright">&copy; 2026 Mel Creatives. All rights reserved.</p>
+            <div class="footer-logo">MEL CREATIVES</div>
+            <div class="social-links">
+                <!-- TODO(owner): Instagram URL -->
+                <a href="https://www.facebook.com/OfficialMlcrtvs35/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+                <a href="https://www.behance.net/meljosephtatud" target="_blank" rel="noopener noreferrer" aria-label="Behance">Behance</a>
+                <a href="https://www.linkedin.com/in/meljosephtatud/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; <span id="current-year">2026</span> Mel Creatives. All rights reserved. Please do not reuse assets without permission.</p>
+                <p class="privacy-note">Anonymous traffic analytics powered by Google Analytics.</p>
+            </div>
         </div>
     </footer>
+
     <!-- Project Overlay -->
-    <div id="project-overlay" class="project-overlay">
+    <div id="project-overlay" class="project-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
         <div class="project-overlay-glass"></div>
 
         <div class="overlay-header">
@@ -662,42 +684,31 @@
                     <span class="meta-divider">•</span>
                     <span id="overlay-year">2024</span>
                     <span class="meta-divider">•</span>
-                    <span id="header-counter"
-                        style="color: var(--accent-color); font-family: 'Space Mono', monospace;">1 / 5</span>
+                    <span id="header-counter" class="header-counter">1 / 1</span>
                 </div>
             </div>
-            <button id="overlay-close" class="overlay-close-btn" aria-label="Close Overlay">
-                <span class="close-icon">×</span>
+            <button id="overlay-close" class="overlay-close-btn" aria-label="Close Project Details">
+                <span class="close-icon" aria-hidden="true">×</span>
                 <span class="close-text">Close</span>
             </button>
         </div>
 
         <div class="overlay-content-container">
-            <!-- Images will be injected here by script.js -->
+            <!-- Images and case study details injected by script.js -->
         </div>
 
         <div class="overlay-footer">
-            <button id="overlay-prev" class="overlay-nav-btn prev-btn">
-                <span class="nav-arrow">←</span>
+            <button id="overlay-prev" class="overlay-nav-btn prev-btn" aria-label="Previous Project">
+                <span class="nav-arrow" aria-hidden="true">←</span>
                 <span class="nav-text">Previous Project</span>
             </button>
             <div class="overlay-counter">
-                <span id="current-index">1</span> / <span id="total-projects">5</span>
+                <span id="current-index">1</span> / <span id="total-projects">1</span>
             </div>
-            <button id="overlay-next" class="overlay-nav-btn next-btn">
+            <button id="overlay-next" class="overlay-nav-btn next-btn" aria-label="Next Project">
                 <span class="nav-text">Next Project</span>
-                <span class="nav-arrow">→</span>
+                <span class="nav-arrow" aria-hidden="true">→</span>
             </button>
-        </div>
-    </div>
-    <!-- Copyright Dialog -->
-    <div id="copyright-dialog" class="copyright-dialog-overlay">
-        <div class="copyright-dialog-content">
-            <h3 class="copyright-title">Mel Creatives</h3>
-            <p class="copyright-message">Images are protected. Please respect the designer's copyright.</p>
-            <div class="copyright-actions">
-                <button id="copyright-ok-btn" class="copyright-btn">OK</button>
-            </div>
         </div>
     </div>
 </body>

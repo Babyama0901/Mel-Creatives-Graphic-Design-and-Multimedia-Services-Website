@@ -1,395 +1,469 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Toggle
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-menu a');
+/**
+ * Mel Creatives — Graphic Design & Multimedia Portfolio
+ * Author: Mel Joseph Tatud
+ */
+(() => {
+    'use strict';
 
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            // Animate hamburger to X (optional simple toggle)
+    document.addEventListener('DOMContentLoaded', () => {
+        // Remove .no-js class if present
+        document.documentElement.classList.remove('no-js');
+
+        // Dynamic Copyright Year
+        const currentYearEl = document.getElementById('current-year');
+        if (currentYearEl) {
+            currentYearEl.textContent = new Date().getFullYear();
+        }
+
+        /* ==========================================================================
+           1. Mobile Navigation Menu
+           ========================================================================== */
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        function closeMobileMenu() {
+            if (!navMenu || !mobileToggle) return;
+            navMenu.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
             const bars = mobileToggle.querySelectorAll('.bar');
-            if (navMenu.classList.contains('active')) {
-                bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-                bars[1].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-            } else {
+            if (bars && bars.length >= 2) {
                 bars[0].style.transform = 'none';
                 bars[1].style.transform = 'none';
             }
-        });
-    }
+        }
 
-    // Close menu when clicking a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
+        function toggleMobileMenu() {
+            if (!navMenu || !mobileToggle) return;
+            const isOpen = navMenu.classList.toggle('active');
+            mobileToggle.setAttribute('aria-expanded', String(isOpen));
             const bars = mobileToggle.querySelectorAll('.bar');
-            bars[0].style.transform = 'none';
-            bars[1].style.transform = 'none';
+            if (bars && bars.length >= 2) {
+                if (isOpen) {
+                    bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+                    bars[1].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+                } else {
+                    bars[0].style.transform = 'none';
+                    bars[1].style.transform = 'none';
+                }
+            }
+        }
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', toggleMobileMenu);
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
         });
-    });
 
-    // Scroll Animation Observer
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                observer.unobserve(entry.target); // Only animate once
+        // Close mobile nav on Escape or outside click
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+                if (mobileToggle) mobileToggle.focus();
             }
         });
-    }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.fade-in, .fade-up');
-    animatedElements.forEach(el => observer.observe(el));
+        document.addEventListener('click', (e) => {
+            if (navMenu && navMenu.classList.contains('active')) {
+                if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            }
+        });
 
-    // Smooth Scroll for Anchor Links (polishing standard behavior)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+        /* ==========================================================================
+           2. Scroll Animations (GSAP with matchMedia + Fallback)
+           ========================================================================== */
+        if (typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined') {
+            window.gsap.registerPlugin(window.ScrollTrigger);
+            const mm = window.gsap.matchMedia();
+
+            // Motion allowed
+            mm.add('(prefers-reduced-motion: no-preference)', () => {
+                window.gsap.set('.fade-up', { y: 35, autoAlpha: 0 });
+                window.gsap.set('.fade-in', { autoAlpha: 0 });
+
+                window.ScrollTrigger.batch('.fade-up', {
+                    start: 'top 85%',
+                    once: true,
+                    onEnter: els => window.gsap.to(els, {
+                        y: 0,
+                        autoAlpha: 1,
+                        duration: 0.8,
+                        ease: 'power3.out',
+                        stagger: 0.12,
+                        overwrite: true
+                    })
                 });
+
+                window.ScrollTrigger.batch('.fade-in', {
+                    start: 'top 90%',
+                    once: true,
+                    onEnter: els => window.gsap.to(els, {
+                        autoAlpha: 1,
+                        duration: 0.9,
+                        ease: 'power2.out',
+                        stagger: 0.1,
+                        overwrite: true
+                    })
+                });
+            });
+
+            // Reduced motion
+            mm.add('(prefers-reduced-motion: reduce)', () => {
+                window.gsap.set('.fade-up, .fade-in', { clearProps: 'all', autoAlpha: 1 });
+            });
+
+            window.addEventListener('load', () => window.ScrollTrigger.refresh());
+            if (document.fonts) {
+                document.fonts.ready.then(() => window.ScrollTrigger.refresh());
             }
-        });
-    });
-
-    // FAQ Accordion Functionality
-    const accordionItems = document.querySelectorAll('.accordion-item');
-
-    accordionItems.forEach(item => {
-        const header = item.querySelector('.accordion-header');
-
-        header.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-
-            // Close all accordion items
-            accordionItems.forEach(accItem => {
-                accItem.classList.remove('active');
-                const icon = accItem.querySelector('.accordion-icon');
-                if (icon) icon.textContent = '+';
-            });
-
-            // If clicked item wasn't active, open it
-            if (!isActive) {
-                item.classList.add('active');
-                const icon = item.querySelector('.accordion-icon');
-                if (icon) icon.textContent = '×';
-            }
-        });
-    });
-
-    // Recent Work Scroll Functionality
-    const scrollArrow = document.querySelector('.scroll-arrow');
-    const recentWorkSlider = document.querySelector('.recent-work-slider');
-
-    if (scrollArrow && recentWorkSlider) {
-        scrollArrow.addEventListener('click', () => {
-            recentWorkSlider.scrollBy({
-                left: 320,
-                behavior: 'smooth'
-            });
-        });
-    }
-
-    // Project Overlay Functionality
-    const overlay = document.getElementById('project-overlay');
-    // const overlayImage = document.getElementById('overlay-image'); // Removed as we use dynamic slides now
-    const overlayTitle = document.getElementById('overlay-title');
-    const overlayCategory = document.getElementById('overlay-category');
-    const overlayYear = document.getElementById('overlay-year');
-    const overlayClose = document.getElementById('overlay-close');
-    const overlayPrev = document.getElementById('overlay-prev');
-    const overlayNext = document.getElementById('overlay-next');
-    const currentIndexSpan = document.getElementById('current-index');
-    const totalProjectsSpan = document.getElementById('total-projects');
-    const headerCounter = document.getElementById('header-counter');
-
-    let projects = [];
-    let currentProjectIndex = 0;
-
-    // Collect all project items (Featured + Recent)
-    const projectImageMap = {
-        "West Esports": "Projects/West Esports - Social Media - Organization - 2024 - 2025.png",
-        "Martian Mayhem": "Projects/Martial Mayhem - Social Media - Esports Team - 2024 - 2025.png",
-        "Alima Artists' Group": "Projects/Alima Artists' Group - Brand Identity - Organization - 2024 - 2025.png",
-        "Artlink App": "Projects/Artlink App - Brand Identity - 2025.png",
-        "T-shirt Design": "Projects/T-shirt Designs - 2025.png",
-        "Mel Creatives": "Projects/Mel Creatives - Brand Identity - 2025.png",
-        "Editorial Spread": "Projects/Editorial Spread - Yearbook - 2025.png",
-        "Logo Redesign": "Projects/Logo Design.png",
-        "Social Media": "Projects/West Esports - Social Media - Organization - 2024 - 2025.png"
-    };
-
-    // Featured
-    document.querySelectorAll('.work-item').forEach(item => {
-        const title = item.getAttribute('data-title') || item.querySelector('img').alt;
-        const category = item.getAttribute('data-category') || 'Featured Project';
-        const year = item.getAttribute('data-year') || '2024';
-
-        // Use high-res image if available in map, otherwise fallback to thumbnail
-        const image = projectImageMap[title] || item.querySelector('img').src;
-
-        projects.push({ title, category, year, image });
-
-        const currentIndex = projects.length - 1;
-        item.addEventListener('click', () => openOverlay(currentIndex));
-    });
-
-    // Recent
-    document.querySelectorAll('.project-card').forEach(item => {
-        const title = item.querySelector('.project-title')?.innerText || 'Project';
-        const category = item.querySelector('.project-category')?.innerText || 'Design';
-        const dateText = item.querySelector('.project-date')?.innerText || '2024';
-        const year = dateText.split(' ').pop();
-
-        // Use high-res image if available in map, otherwise fallback to thumbnail
-        const image = projectImageMap[title] || item.querySelector('img').src;
-
-        projects.push({ title, category, year, image });
-
-        const currentIndex = projects.length - 1;
-        item.addEventListener('click', () => openOverlay(currentIndex));
-    });
-
-    if (totalProjectsSpan) totalProjectsSpan.textContent = projects.length;
-
-    function openOverlay(index) {
-        if (index < 0 || index >= projects.length) return;
-
-        currentProjectIndex = index;
-        const project = projects[index];
-
-        overlayTitle.textContent = project.title;
-        overlayCategory.textContent = project.category;
-        overlayYear.textContent = project.year;
-
-        // Populate slides (Single Image or Library)
-        const container = document.querySelector('.overlay-content-container');
-        container.innerHTML = ''; // Clear previous
-
-        if (project.title === 'Websites') {
-            // Render Website Library Grid
-            const libraryGrid = document.createElement('div');
-            libraryGrid.className = 'library-grid';
-
-            const websites = [
-                {
-                    title: 'Pag-Ambit Interactive Web Comic Book',
-                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?fm=jpg&q=60&w=800',
-                    link: 'https://babyama0901.github.io/Pag-Ambit-Interactive-Web-Comic-Book/'
-                },
-                {
-                    title: 'Team Lykaions Digital Portfolio',
-                    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?fm=jpg&q=60&w=800',
-                    link: 'https://babyama0901.github.io/Team-Lykaions---Digital-Portfolio-2025---BSEMC-4A/'
-                }
-            ];
-
-            websites.forEach(site => {
-                const item = document.createElement('div');
-                item.className = 'library-item';
-                item.innerHTML = `
-                    <div class="library-preview">
-                        <img src="${site.image}" alt="${site.title}">
-                    </div>
-                    <div class="library-info">
-                        <h3>${site.title}</h3>
-                        <a href="${site.link}" class="library-link" target="_blank">View Website ↗</a>
-                    </div>
-                `;
-                libraryGrid.appendChild(item);
-            });
-
-            container.appendChild(libraryGrid);
-        } else if (project.title === 'UI/UX Designs') {
-            // Render UI/UX Designs Grid
-            const libraryGrid = document.createElement('div');
-            libraryGrid.className = 'library-grid';
-
-            const uiuxDesigns = [
-                {
-                    title: 'Hardpoint App',
-                    year: '2024',
-                    tags: 'Mobile Application',
-                    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?fm=jpg&q=60&w=800',
-                    link: 'https://www.figma.com/design/BWyl7jjKEvgWmSIcKNxrWM/EMC-204---Hardpoint-App---Tatud---Garcia?m=auto&t=QrjUIZikJ1oWFETj-6'
-                },
-                {
-                    title: 'Traffic Management Section',
-                    year: '2024',
-                    tags: 'Website Portfolio',
-                    image: 'https://images.unsplash.com/photo-1507238692062-5a042e9e18b4?fm=jpg&q=60&w=800',
-                    link: 'https://www.figma.com/design/kRNfOmbywp8w67q1ux997u/TRAFFIC-MANAGEMENT-SECTION?node-id=1-2&t=Co9cJQGwpzxVTvyD-1'
-                },
-                {
-                    title: 'Mel Creatives',
-                    year: '2025',
-                    tags: 'Website Portfolio',
-                    image: 'https://images.unsplash.com/photo-1555421689-d68471e189f2?fm=jpg&q=60&w=800',
-                    link: 'https://www.figma.com/site/0H35jaLN0YuwsnYk9RoXVb/Mel-Creatives?node-id=0-1&t=3MIPr3MYnQvurHQx-1'
-                }
-            ];
-
-            uiuxDesigns.forEach(design => {
-                const item = document.createElement('div');
-                item.className = 'library-item';
-                item.innerHTML = `
-                    <div class="library-preview">
-                        <img src="${design.image}" alt="${design.title}">
-                    </div>
-                    <div class="library-info">
-                        <h3>${design.title}</h3>
-                        <p style="font-size: 0.9rem; color: #888; margin: 5px 0;">${design.year} • ${design.tags}</p>
-                        <a href="${design.link}" class="library-link" target="_blank">View Figma Project ↗</a>
-                    </div>
-                `;
-                libraryGrid.appendChild(item);
-            });
-
-            container.appendChild(libraryGrid);
         } else {
-            // Standard Single Image Render
-            const img = document.createElement('img');
-            img.src = project.image;
-            img.alt = `${project.title}`;
-            img.classList.add('overlay-slide');
+            // IntersectionObserver Fallback
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
 
-            const wrapper = document.createElement('div');
-            // Custom dimensions requested: 1400px width (generalized)
-            wrapper.style.width = '100%';
-            wrapper.style.maxWidth = '1400px';
-            wrapper.style.margin = '0 auto'; // Center it
-            // Removed fixed aspect ratio to allow variable height images
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
 
-            // Strict image styling to ensure it fills the container exactly without duplicate/crop/distortion
-            img.style.width = '100%';
-            img.style.height = 'auto'; // Allow natural height
-            img.style.objectFit = 'contain';
-            img.style.display = 'block';
-            img.style.maxHeight = 'none'; // Override general max-heights
-
-            wrapper.appendChild(img);
-            container.appendChild(wrapper);
+            document.querySelectorAll('.fade-in, .fade-up').forEach(el => observer.observe(el));
         }
 
-        currentIndexSpan.textContent = currentProjectIndex + 1;
-        if (headerCounter) headerCounter.textContent = `${currentProjectIndex + 1} / ${projects.length}`;
+        /* ==========================================================================
+           3. Smooth Scroll for Anchor Links (with scroll-margin-top offset)
+           ========================================================================== */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
 
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    if (target.tabIndex < 0 && target !== document.body) {
+                        target.setAttribute('tabindex', '-1');
+                    }
+                    target.focus({ preventScroll: true });
+                }
+            });
+        });
 
-    function closeOverlay() {
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+        /* ==========================================================================
+           4. Accessible FAQ Accordion
+           ========================================================================== */
+        const accordionItems = document.querySelectorAll('.accordion-item');
 
-    function showNextProject() {
-        let nextIndex = currentProjectIndex + 1;
-        if (nextIndex >= projects.length) nextIndex = 0;
-        openOverlay(nextIndex);
-    }
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            if (!header) return;
 
-    function showPrevProject() {
-        let prevIndex = currentProjectIndex - 1;
-        if (prevIndex < 0) prevIndex = projects.length - 1;
-        openOverlay(prevIndex);
-    }
+            header.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
 
-    if (overlayClose) overlayClose.addEventListener('click', closeOverlay);
-    if (overlayNext) overlayNext.addEventListener('click', showNextProject);
-    if (overlayPrev) overlayPrev.addEventListener('click', showPrevProject);
+                // Close all accordion items
+                accordionItems.forEach(accItem => {
+                    accItem.classList.remove('active');
+                    const btn = accItem.querySelector('.accordion-header');
+                    const icon = accItem.querySelector('.accordion-icon');
+                    if (btn) btn.setAttribute('aria-expanded', 'false');
+                    if (icon) icon.textContent = '+';
+                });
 
-    document.addEventListener('keydown', (e) => {
-        if (!overlay.classList.contains('active')) return;
+                // Toggle selected
+                if (!isActive) {
+                    item.classList.add('active');
+                    header.setAttribute('aria-expanded', 'true');
+                    const icon = item.querySelector('.accordion-icon');
+                    if (icon) icon.textContent = '×';
+                }
+            });
+        });
 
-        if (e.key === 'Escape') closeOverlay();
-        if (e.key === 'ArrowRight') showNextProject();
-        if (e.key === 'ArrowLeft') showPrevProject();
-    });
+        /* ==========================================================================
+           5. Project Overlay Dialog (Modal)
+           ========================================================================== */
+        const overlay = document.getElementById('project-overlay');
+        const overlayTitle = document.getElementById('overlay-title');
+        const overlayCategory = document.getElementById('overlay-category');
+        const overlayYear = document.getElementById('overlay-year');
+        const overlayClose = document.getElementById('overlay-close');
+        const overlayPrev = document.getElementById('overlay-prev');
+        const overlayNext = document.getElementById('overlay-next');
+        const currentIndexSpan = document.getElementById('current-index');
+        const totalProjectsSpan = document.getElementById('total-projects');
+        const headerCounter = document.getElementById('header-counter');
+        const overlayContainer = document.querySelector('.overlay-content-container');
 
-    // Close on clicking outside image
-    const overlayGlass = document.querySelector('.project-overlay-glass');
-    if (overlayGlass) overlayGlass.addEventListener('click', closeOverlay);
+        let projects = [];
+        let currentProjectIndex = 0;
+        let lastFocusedElement = null;
 
-    // Content Protection
-    const copyrightDialog = document.getElementById('copyright-dialog');
-    const copyrightOkBtn = document.getElementById('copyright-ok-btn');
+        const projectImageMap = {
+            "West Esports": "Projects/West Esports - Social Media - Organization - 2024 - 2025.png",
+            "Martian Mayhem": "Projects/Martial Mayhem - Social Media - Esports Team - 2024 - 2025.png",
+            "Alima Artists' Group": "Projects/Alima Artists' Group - Brand Identity - Organization - 2024 - 2025.png",
+            "Artlink App": "Projects/Artlink App - Brand Identity - 2025.png",
+            "T-shirt Design": "Projects/T-shirt Designs - 2025.png",
+            "Mel Creatives": "Projects/Mel Creatives - Brand Identity - 2025.png",
+            "Editorial Spread": "Projects/Editorial Spread - Yearbook - 2025.png",
+            "Logo Redesign": "Projects/Logo Design.png",
+            "Social Media": "Projects/West Esports - Social Media - Organization - 2024 - 2025.png"
+        };
 
-    function showCopyrightDialog() {
-        if (copyrightDialog) {
-            copyrightDialog.classList.add('active');
-        } else {
-            alert('Images are protected. Please respect the artist\'s copyright.');
+        // Collect Featured projects
+        document.querySelectorAll('.work-item').forEach(item => {
+            const img = item.querySelector('img');
+            const title = item.getAttribute('data-title') || (img ? img.alt : 'Project');
+            const category = item.getAttribute('data-category') || 'Featured Project';
+            const year = item.getAttribute('data-year') || '2025';
+            const description = item.getAttribute('data-description') || '';
+            const image = projectImageMap[title] || (img ? img.src : '');
+
+            projects.push({ title, category, year, description, image, triggerEl: item });
+
+            const idx = projects.length - 1;
+            item.addEventListener('click', () => openOverlay(idx));
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openOverlay(idx);
+                }
+            });
+        });
+
+        // Collect Recent projects
+        document.querySelectorAll('.project-card').forEach(item => {
+            const title = item.getAttribute('data-title') || item.querySelector('.project-title')?.innerText || 'Project';
+            const category = item.getAttribute('data-category') || item.querySelector('.project-category')?.innerText || 'Design';
+            const year = item.getAttribute('data-year') || item.querySelector('.project-date')?.innerText || '2025';
+            const img = item.querySelector('img');
+            const image = projectImageMap[title] || (img ? img.src : '');
+
+            projects.push({ title, category, year, description: '', image, triggerEl: item });
+
+            const idx = projects.length - 1;
+            item.addEventListener('click', () => openOverlay(idx));
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openOverlay(idx);
+                }
+            });
+        });
+
+        // Initialize counters
+        if (totalProjectsSpan) totalProjectsSpan.textContent = projects.length;
+        if (headerCounter) headerCounter.textContent = `1 / ${projects.length}`;
+
+        function openOverlay(index) {
+            if (!overlay || index < 0 || index >= projects.length) return;
+
+            lastFocusedElement = document.activeElement;
+            currentProjectIndex = index;
+            const project = projects[index];
+
+            if (overlayTitle) overlayTitle.textContent = project.title;
+            if (overlayCategory) overlayCategory.textContent = project.category;
+            if (overlayYear) overlayYear.textContent = project.year;
+
+            if (overlayContainer) {
+                overlayContainer.innerHTML = '';
+
+                if (project.title === 'Websites') {
+                    const libraryGrid = document.createElement('div');
+                    libraryGrid.className = 'library-grid';
+
+                    const websites = [
+                        {
+                            title: 'Pag-Ambit Interactive Web Comic Book',
+                            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?fm=jpg&q=60&w=800',
+                            link: 'https://babyama0901.github.io/Pag-Ambit-Interactive-Web-Comic-Book/'
+                        },
+                        {
+                            title: 'Team Lykaions Digital Portfolio',
+                            image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?fm=jpg&q=60&w=800',
+                            link: 'https://babyama0901.github.io/Team-Lykaions---Digital-Portfolio-2025---BSEMC-4A/'
+                        }
+                    ];
+
+                    websites.forEach(site => {
+                        const item = document.createElement('div');
+                        item.className = 'library-item';
+                        item.innerHTML = `
+                            <div class="library-preview">
+                                <img src="${site.image}" alt="${site.title}" width="400" height="225" loading="lazy">
+                            </div>
+                            <div class="library-info">
+                                <h3>${site.title}</h3>
+                                <a href="${site.link}" class="library-link" target="_blank" rel="noopener noreferrer">View Website ↗</a>
+                            </div>
+                        `;
+                        libraryGrid.appendChild(item);
+                    });
+
+                    overlayContainer.appendChild(libraryGrid);
+                } else if (project.title === 'UI/UX Designs') {
+                    const libraryGrid = document.createElement('div');
+                    libraryGrid.className = 'library-grid';
+
+                    const uiuxDesigns = [
+                        {
+                            title: 'Hardpoint App',
+                            year: '2024',
+                            tags: 'Mobile Application',
+                            image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?fm=jpg&q=60&w=800',
+                            link: 'https://www.figma.com/design/BWyl7jjKEvgWmSIcKNxrWM/EMC-204---Hardpoint-App---Tatud---Garcia?m=auto&t=QrjUIZikJ1oWFETj-6'
+                        },
+                        {
+                            title: 'Traffic Management Section',
+                            year: '2024',
+                            tags: 'Website Portfolio',
+                            image: 'https://images.unsplash.com/photo-1507238692062-5a042e9e18b4?fm=jpg&q=60&w=800',
+                            link: 'https://www.figma.com/design/kRNfOmbywp8w67q1ux997u/TRAFFIC-MANAGEMENT-SECTION?node-id=1-2&t=Co9cJQGwpzxVTvyD-1'
+                        },
+                        {
+                            title: 'Mel Creatives',
+                            year: '2025',
+                            tags: 'Website Portfolio',
+                            image: 'https://images.unsplash.com/photo-1555421689-d68471e189f2?fm=jpg&q=60&w=800',
+                            link: 'https://www.figma.com/site/0H35jaLN0YuwsnYk9RoXVb/Mel-Creatives?node-id=0-1&t=3MIPr3MYnQvurHQx-1'
+                        }
+                    ];
+
+                    uiuxDesigns.forEach(design => {
+                        const item = document.createElement('div');
+                        item.className = 'library-item';
+                        item.innerHTML = `
+                            <div class="library-preview">
+                                <img src="${design.image}" alt="${design.title}" width="400" height="225" loading="lazy">
+                            </div>
+                            <div class="library-info">
+                                <h3>${design.title}</h3>
+                                <p style="font-size: 0.9rem; color: #888; margin: 5px 0;">${design.year} • ${design.tags}</p>
+                                <a href="${design.link}" class="library-link" target="_blank" rel="noopener noreferrer">View Figma Project ↗</a>
+                            </div>
+                        `;
+                        libraryGrid.appendChild(item);
+                    });
+
+                    overlayContainer.appendChild(libraryGrid);
+                } else {
+                    const wrapper = document.createElement('div');
+                    wrapper.style.width = '100%';
+                    wrapper.style.maxWidth = '1400px';
+                    wrapper.style.margin = '0 auto';
+
+                    if (project.description) {
+                        const desc = document.createElement('p');
+                        desc.style.color = '#ccc';
+                        desc.style.fontSize = '1.05rem';
+                        desc.style.marginBottom = '20px';
+                        desc.style.textAlign = 'center';
+                        desc.textContent = project.description;
+                        wrapper.appendChild(desc);
+                    }
+
+                    const img = document.createElement('img');
+                    img.src = project.image;
+                    img.alt = `${project.title} detailed preview`;
+                    img.classList.add('overlay-slide');
+                    img.style.width = '100%';
+                    img.style.height = 'auto';
+                    img.style.objectFit = 'contain';
+                    img.style.display = 'block';
+
+                    wrapper.appendChild(img);
+                    overlayContainer.appendChild(wrapper);
+                }
+            }
+
+            if (currentIndexSpan) currentIndexSpan.textContent = currentProjectIndex + 1;
+            if (headerCounter) headerCounter.textContent = `${currentProjectIndex + 1} / ${projects.length}`;
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Focus close button for accessibility
+            if (overlayClose) {
+                setTimeout(() => overlayClose.focus(), 50);
+            }
         }
-    }
 
-    function closeCopyrightDialog() {
-        if (copyrightDialog) {
-            copyrightDialog.classList.remove('active');
+        function closeOverlay() {
+            if (!overlay) return;
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Return focus to triggering element
+            if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+                lastFocusedElement.focus();
+            }
         }
-    }
 
-    if (copyrightOkBtn) {
-        copyrightOkBtn.addEventListener('click', closeCopyrightDialog);
-    }
+        function showNextProject() {
+            let nextIndex = currentProjectIndex + 1;
+            if (nextIndex >= projects.length) nextIndex = 0;
+            openOverlay(nextIndex);
+        }
 
-    // Close on click outside (optional, enhances UX)
-    if (copyrightDialog) {
-        copyrightDialog.addEventListener('click', (e) => {
-            if (e.target === copyrightDialog) {
-                closeCopyrightDialog();
+        function showPrevProject() {
+            let prevIndex = currentProjectIndex - 1;
+            if (prevIndex < 0) prevIndex = projects.length - 1;
+            openOverlay(prevIndex);
+        }
+
+        if (overlayClose) overlayClose.addEventListener('click', closeOverlay);
+        if (overlayNext) overlayNext.addEventListener('click', showNextProject);
+        if (overlayPrev) overlayPrev.addEventListener('click', showPrevProject);
+
+        // Overlay keyboard trapping and navigation
+        document.addEventListener('keydown', (e) => {
+            if (!overlay || !overlay.classList.contains('active')) return;
+
+            if (e.key === 'Escape') {
+                closeOverlay();
+            } else if (e.key === 'ArrowRight') {
+                showNextProject();
+            } else if (e.key === 'ArrowLeft') {
+                showPrevProject();
+            } else if (e.key === 'Tab') {
+                // Focus trap inside active overlay dialog
+                const focusable = overlay.querySelectorAll(
+                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                );
+                if (!focusable || focusable.length === 0) return;
+
+                const firstEl = focusable[0];
+                const lastEl = focusable[focusable.length - 1];
+
+                if (e.shiftKey && document.activeElement === firstEl) {
+                    e.preventDefault();
+                    lastEl.focus();
+                } else if (!e.shiftKey && document.activeElement === lastEl) {
+                    e.preventDefault();
+                    firstEl.focus();
+                }
             }
         });
-    }
 
-    document.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        showCopyrightDialog();
-        return false;
-    });
-
-    // Additional PrintScreen deterrent
-    document.addEventListener('keyup', (e) => {
-        if (e.key === 'PrintScreen') {
-            try {
-                navigator.clipboard.writeText(''); // Attempt to clear clipboard
-            } catch (err) {
-                // Clipboard write failed
-            }
-            showCopyrightDialog();
+        // Close on clicking overlay background glass
+        const overlayGlass = document.querySelector('.project-overlay-glass');
+        if (overlayGlass) {
+            overlayGlass.addEventListener('click', closeOverlay);
         }
     });
-
-    document.addEventListener('keydown', (e) => {
-        // Prevent F12, Ctrl+S, Ctrl+U, Ctrl+Shift+I, Ctrl+P
-        if (
-            e.key === 'F12' ||
-            e.key === 'PrintScreen' ||
-            ((e.ctrlKey || e.metaKey) && (
-                e.key === 's' ||
-                e.key === 'u' ||
-                e.key === 'p' ||
-                (e.shiftKey && e.key === 'I')
-            ))
-        ) {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    document.addEventListener('dragstart', (e) => {
-        if (e.target.nodeName === 'IMG') {
-            e.preventDefault();
-            return false;
-        }
-    });
-});
+})();
