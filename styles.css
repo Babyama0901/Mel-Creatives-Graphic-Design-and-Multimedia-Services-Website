@@ -2173,15 +2173,43 @@ section {
     transition-delay: 0.2s;
 }
 
+.overlay-image-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.library-meta {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 5px 0;
+}
+
 .overlay-slide {
     width: 100%;
-    height: 720px;
-    /* Fixed height as requested */
-    object-fit: cover;
-    /* Ensure image covers the area without distortion */
+    height: auto;
+    max-height: 85vh;
+    object-fit: contain;
     display: block;
     border-radius: 4px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.overlay-description {
+    color: #cccccc;
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+    text-align: center;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Hide placeholder projects until real work is ready */
+article[data-placeholder="true"] {
+    display: none !important;
 }
 
 #overlay-image {

@@ -17,7 +17,7 @@
     <meta name="description"
         content="Official Portfolio of Mel Creatives - delivering premium brand identity, packaging, and multimedia design solutions by Mel Joseph Tatud.">
     <link rel="canonical" href="https://melcreatives.vercel.app/">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#0b0b0f">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -25,7 +25,7 @@
     <meta property="og:title" content="Mel Creatives | Graphic Design & Multimedia">
     <meta property="og:description"
         content="Brand identity, packaging, and multimedia design by Mel Joseph Tatud. Delivering intuitive digital experiences and bold visual stories.">
-    <meta property="og:image" content="https://melcreatives.vercel.app/Stock%20Images/West%20Esports%20-%20Feature%20Project%201.png">
+    <meta property="og:image" content="https://melcreatives.vercel.app/og-image.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="twitter:title" content="Mel Creatives | Graphic Design & Multimedia">
     <meta name="twitter:description"
         content="Brand identity, packaging, and multimedia design by Mel Joseph Tatud. Delivering intuitive digital experiences and bold visual stories.">
-    <meta name="twitter:image" content="https://melcreatives.vercel.app/Stock%20Images/West%20Esports%20-%20Feature%20Project%201.png">
+    <meta name="twitter:image" content="https://melcreatives.vercel.app/og-image.jpg">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -57,10 +57,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="Mel%20Creatives%20Favicon.svg">
+    <link rel="apple-touch-icon" href="Logo.png">
     <link rel="stylesheet" href="styles.css">
 
     <!-- GSAP & Plugins -->
@@ -142,24 +141,24 @@
                 <div class="work-grid">
                     <article class="work-item fade-up" data-title="West Esports" data-category="Esports & Gaming"
                         data-year="2025" data-description="Brand identity, visual guidelines, and tournament collateral for university esports organization." tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study for West Esports">
-                        <img src="Stock%20Images/West%20Esports%20-%20Feature%20Project%201.png" class="work-thumb"
-                            alt="West Esports social media and organization branding graphics" width="800" height="1000">
+                        <img src="Stock%20Images/west-esports.jpg" class="work-thumb"
+                            alt="West Esports tournament visual identity and gaming branding in cyan and violet" width="800" height="1000" decoding="async">
                         <div class="work-overlay">
                             <span class="btn-case">View Casestudy ↗</span>
                         </div>
                     </article>
                     <article class="work-item fade-up delay-1" data-title="Martian Mayhem" data-category="Esports & Gaming"
                         data-year="2024" data-description="Tournament branding, key art illustration, and broadcast graphics for an esports tournament." tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study for Martian Mayhem">
-                        <img src="Stock%20Images/Martian%20Mayhem%20-%20Feature%20Project%202.png" class="work-thumb"
-                            alt="Martian Mayhem esports team social media and tournament key visual" width="800" height="1200">
+                        <img src="Stock%20Images/martian-mayhem.jpg" class="work-thumb"
+                            alt="Martian Mayhem esports tournament key art illustration with dynamic mascot branding" width="800" height="1200" loading="lazy" decoding="async">
                         <div class="work-overlay">
                             <span class="btn-case">View Casestudy ↗</span>
                         </div>
                     </article>
                     <article class="work-item fade-up delay-2" data-title="Alima Artists' Group"
                         data-category="Branding" data-year="2024" data-description="Comprehensive brand identity, exhibition collateral, and social media presence for fine arts collective." tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study for Alima Artists' Group">
-                        <img src="Stock%20Images/Alima%20Artists'%20Group%20-%20Feature%20Project%203.png"
-                            class="work-thumb" alt="Alima Artists' Group brand identity and exhibition visuals" width="800" height="1000">
+                        <img src="Stock%20Images/alima-artists-group.jpg"
+                            class="work-thumb" alt="Alima Artists' Group fine arts collective brand identity and exhibition visuals" width="800" height="1000" loading="lazy" decoding="async">
                         <div class="work-overlay">
                             <span class="btn-case">View Casestudy ↗</span>
                         </div>
@@ -195,6 +194,7 @@
                         <div class="experience-item">
                             <div class="role">Student Content Creator</div>
                             <div class="company">West Visayas State University</div>
+                            <!-- TODO(owner): confirm correct dates (e.g. Apr 2023 - Sept 2023) -->
                             <div class="year">Apr 2022 - Aug 2022</div>
                         </div>
                         <div class="experience-item">
@@ -203,6 +203,7 @@
                             <div class="year">Aug 2024 - Aug 2025</div>
                         </div>
                         <div class="experience-item">
+                            <!-- TODO(owner): confirm title -->
                             <div class="role">Creative Director</div>
                             <div class="company">Alima Artists' Group - WVSU</div>
                             <div class="year">Aug 2024 - Aug 2025</div>
@@ -239,7 +240,7 @@
                 </div>
             </div>
         </section>
-        <div class="section-divider"></div>
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- 4. Recent Projects (Grid Layout) -->
         <section id="recent-projects" class="recent-projects">
@@ -250,96 +251,95 @@
 
                 <div class="projects-grid">
                     <article class="project-card fade-up" data-title="Artlink App" data-category="Branding" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View project details for Artlink App">
-                        <img src="Projects/Artlink%20App%20-%20Brand%20Identity%20-%202025.png"
-                            class="project-image" alt="Artlink App - Brand Identity and Mobile Interface Design" width="800" height="600" loading="lazy" decoding="async">
+                        <img src="Projects/artlink-app-thumb.jpg"
+                            class="project-image" alt="Artlink App brand identity and mobile UI concept" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Artlink App</h3>
                             <div class="project-meta">
                                 <span class="project-category">Branding</span>
+                                <span class="project-sep"> · </span>
                                 <span class="project-date">2025</span>
                             </div>
                         </div>
                     </article>
 
                     <article class="project-card fade-up delay-1" data-title="T-shirt Design" data-category="Apparel Design" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View project details for T-shirt Design">
-                        <img src="Projects/T-shirt%20Designs%20-%202025.png"
-                            class="project-image" alt="Custom apparel and merchandise graphics collection" width="800" height="600" loading="lazy" decoding="async">
+                        <img src="Projects/tshirt-designs.jpg"
+                            class="project-image" alt="Custom screen-printed apparel typography and graphics collection" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">T-shirt Design</h3>
                             <div class="project-meta">
                                 <span class="project-category">Apparel Design</span>
+                                <span class="project-sep"> · </span>
                                 <span class="project-date">2025</span>
                             </div>
                         </div>
                     </article>
 
                     <article class="project-card fade-up delay-2" data-title="Mel Creatives" data-category="Brand Identity" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View project details for Mel Creatives">
-                        <img src="Projects/Mel%20Creatives%20-%20Brand%20Identity%20-%202025.png"
-                            class="project-image" alt="Mel Creatives personal branding and visual identity kit" width="800" height="600" loading="lazy" decoding="async">
+                        <img src="Projects/mel-creatives-thumb.jpg"
+                            class="project-image" alt="Mel Creatives personal branding and visual identity system" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Mel Creatives</h3>
                             <div class="project-meta">
                                 <span class="project-category">Brand Identity</span>
+                                <span class="project-sep"> · </span>
                                 <span class="project-date">2025</span>
                             </div>
                         </div>
                     </article>
 
                     <article class="project-card fade-up delay-3" data-title="Editorial Spread" data-category="Editorial Design" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View project details for Editorial Spread">
-                        <img src="Projects/Editorial%20Spread%20-%20Yearbook%20-%202025.png"
-                            class="project-image" alt="Editorial layout and publication spread design for yearbook" width="800" height="600" loading="lazy" decoding="async">
+                        <!-- TODO(owner): confirm publication year/date for Editorial Spread -->
+                        <img src="Projects/editorial-spread.jpg"
+                            class="project-image" alt="Yearbook editorial typography and multi-column publication layout" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Editorial Spread</h3>
                             <div class="project-meta">
                                 <span class="project-category">Editorial Design</span>
+                                <span class="project-sep"> · </span>
                                 <span class="project-date">2025</span>
                             </div>
                         </div>
                     </article>
 
                     <article class="project-card fade-up delay-4" data-title="Logo Redesign" data-category="Branding" data-year="2024" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View project details for Logo Redesign">
-                        <img src="Projects/Logo%20Design.png"
-                            class="project-image" alt="Minimalist geometric logo redesign showcase" width="800" height="600" loading="lazy" decoding="async">
+                        <img src="Projects/logo-design.jpg"
+                            class="project-image" alt="Modern geometric logo redesign and vector symbol construction" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Logo Redesign</h3>
                             <div class="project-meta">
                                 <span class="project-category">Branding</span>
+                                <span class="project-sep"> · </span>
                                 <span class="project-date">2024</span>
                             </div>
                         </div>
                     </article>
 
-                    <article class="project-card fade-up delay-5" data-title="Websites" data-category="Web Development" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View interactive website projects">
+                    <!-- Scaffold cards requiring owner cover assets: hidden with data-placeholder="true" per B1 -->
+                    <!-- TODO(owner): Add real project cover image to replace placeholder -->
+                    <article class="project-card fade-up delay-5" data-title="Websites" data-category="Web Development" data-year="2025" data-placeholder="true" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View interactive website projects">
                         <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?fm=jpg&q=60&w=800"
                             class="project-image" alt="Curated interactive web design and digital portfolio projects" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">Websites</h3>
                             <div class="project-meta">
                                 <span class="project-category">Web Development</span>
+                                <span class="project-sep"> · </span>
                                 <span class="project-date">2025</span>
                             </div>
                         </div>
                     </article>
 
-                    <article class="project-card fade-up delay-6" data-title="Social Media" data-category="Digital Design" data-year="2024" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View social media campaign graphics">
-                        <img src="Projects/West%20Esports%20-%20Social%20Media%20-%20Organization%20-%202024%20-%202025.png"
-                            class="project-image" alt="Social media campaign and promotional graphics for esports organization" width="800" height="600" loading="lazy" decoding="async">
-                        <div class="project-info">
-                            <h3 class="project-title">Social Media</h3>
-                            <div class="project-meta">
-                                <span class="project-category">Digital Design</span>
-                                <span class="project-date">2024</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card fade-up delay-7" data-title="UI/UX Designs" data-category="UI/UX Design" data-year="2025" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Figma UI/UX projects">
+                    <!-- TODO(owner): Add real project cover image to replace placeholder -->
+                    <article class="project-card fade-up delay-6" data-title="UI/UX Designs" data-category="UI/UX Design" data-year="2025" data-placeholder="true" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Figma UI/UX projects">
                         <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?fm=jpg&q=60&w=800"
                             class="project-image" alt="Figma UI/UX design prototypes and application interfaces" width="800" height="600" loading="lazy" decoding="async">
                         <div class="project-info">
                             <h3 class="project-title">UI/UX Designs</h3>
                             <div class="project-meta">
                                 <span class="project-category">UI/UX Design</span>
+                                <span class="project-sep"> · </span>
                                 <span class="project-date">2025</span>
                             </div>
                         </div>
@@ -353,13 +353,13 @@
         <section id="process" class="process">
             <div class="container process-inner">
                 <div class="process-image fade-in">
-                    <img src="Stock%20Images/Design%20Process.jpg" class="process-img-placeholder" alt="Creative design process and ideation workflow" width="600" height="800" loading="lazy" decoding="async">
+                    <img src="Stock%20Images/design-process-opt.jpg" class="process-img-placeholder" alt="Creative design process and ideation workflow" width="600" height="800" loading="lazy" decoding="async">
                 </div>
                 <div class="process-content">
                     <div class="process-header fade-in">
                         <span class="section-badge">✦ Design process</span>
                         <h2>Process</h2>
-                        <p>Crafting bold visuals that inspire and elevate brands with intentional thought and methodology.</p>
+                        <p>Crafting bold visuals that inspire and elevate brands, from first brief to final delivery.</p>
                         <div class="process-btns">
                             <a href="#contact" class="btn btn-outline-dark">Get in Touch</a>
                             <a href="#projects" class="btn btn-outline-dark">See Projects</a>
@@ -378,7 +378,7 @@
                             <div class="step-content">
                                 <div class="step-number">1</div>
                                 <h3>Define Your Vision</h3>
-                                <p>We begin with an in-depth creative brief and discovery discussion to define your brand goals, target audience, and project scope.</p>
+                                <p>Tell me about your brand, audience and goals. We'll agree on scope, deliverables and timeline before any design work begins.</p>
                             </div>
                         </div>
 
@@ -395,7 +395,7 @@
                             <div class="step-content">
                                 <div class="step-number">2</div>
                                 <h3>Submit Your Request</h3>
-                                <p>Easily submit your design requirements, references, and project assets directly via email or our service request form to align on expectations.</p>
+                                <p>Send your brief through the service form or email. I'll review it, ask any follow-up questions and confirm the plan with you.</p>
                             </div>
                         </div>
 
@@ -410,7 +410,7 @@
                             <div class="step-content">
                                 <div class="step-number">3</div>
                                 <h3>Project Delivered</h3>
-                                <p>With a keen eye for detail and high standards of craft, I deliver refined, production-ready designs — typically within 2–3 days for small projects and up to 2 weeks for larger scopes.</p>
+                                <p>I design with close attention to detail and share drafts for your feedback. Small projects are typically delivered in 2–3 days; larger ones can take up to 2 weeks.</p>
                             </div>
                         </div>
                     </div>
@@ -441,7 +441,7 @@
                         </div>
                     </div>
                     <div class="services-header-right fade-in delay-1">
-                        <img src="Stock%20Images/Services.jpg" class="services-img-placeholder" alt="Mel Creatives graphic design and multimedia services" width="600" height="800" loading="lazy" decoding="async">
+                        <img src="Stock%20Images/services-opt.jpg" class="services-img-placeholder" alt="Mel Creatives graphic design and multimedia services" width="600" height="800" loading="lazy" decoding="async">
                     </div>
                 </div>
 
@@ -449,22 +449,22 @@
                     <div class="service-card-new fade-up">
                         <div class="service-icon" aria-hidden="true">✦</div>
                         <h3>Brand Identity</h3>
-                        <p>Crafting unique, memorable brand identities that resonate with your audience — from logos and color palettes to comprehensive visual guidelines.</p>
+                        <p>Crafting unique, memorable brand identities that resonate with your audience, from logos to visual systems, so every touchpoint reflects your brand's essence.</p>
                     </div>
                     <div class="service-card-new fade-up delay-1">
                         <div class="service-icon" aria-hidden="true">✦</div>
                         <h3>Brand Design</h3>
-                        <p>Designing consistent, engaging brand collateral and marketing graphics across print and digital touchpoints to strengthen brand recognition.</p>
+                        <p>Creating cohesive brand graphics for social media, print and digital channels so your message looks consistent everywhere your audience finds you.</p>
                     </div>
                     <div class="service-card-new fade-up delay-2">
                         <div class="service-icon" aria-hidden="true">◇</div>
                         <h3>Package Design</h3>
-                        <p>Designing sleek, impactful packaging that not only looks stunning but also connects with your ideal customers — turning first impressions into lasting brand loyalty.</p>
+                        <p>Designing sleek, impactful packaging that looks great on the shelf and connects with your ideal customers, turning first impressions into lasting brand loyalty.</p>
                     </div>
                     <div class="service-card-new fade-up delay-3">
                         <div class="service-icon" aria-hidden="true">◈</div>
                         <h3>Mockup Design</h3>
-                        <p>Bringing your products to life through high-fidelity, realistic 3D and digital mockups, giving you a tangible preview of how your visuals shine in the real world.</p>
+                        <p>Bringing your brand to life through high-fidelity product mockups, giving you a clear, realistic preview of how your packaging and visuals will look in the real world.</p>
                     </div>
                 </div>
 
@@ -511,7 +511,7 @@
                     <p>Find answers to common questions about my design process, services, and collaboration.</p>
 
                     <div class="faq-image">
-                        <img src="Stock%20Images/FAQs.jpg" class="faq-img-placeholder" alt="Answers to frequent questions about design process and collaboration" width="600" height="800" loading="lazy" decoding="async">
+                        <img src="Stock%20Images/faqs-opt.jpg" class="faq-img-placeholder" alt="Answers to frequent questions about design process and collaboration" width="600" height="800" loading="lazy" decoding="async">
                     </div>
 
                     <div class="faq-tags">
@@ -540,7 +540,7 @@
                             <span class="accordion-icon" aria-hidden="true">+</span>
                         </button>
                         <div class="accordion-content" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2">
-                            <p>Simply reach out via email or submit the service request form. I'll review your project requirements and provide a tailored proposal.</p>
+                            <p>Send your brief through the service form or email. I'll review it, ask any follow-up questions and confirm the plan with you.</p>
                         </div>
                     </div>
 
@@ -560,7 +560,7 @@
                             <span class="accordion-icon" aria-hidden="true">+</span>
                         </button>
                         <div class="accordion-content" id="faq-panel-4" role="region" aria-labelledby="faq-btn-4">
-                            <p>Project timelines vary based on complexity. Small tasks typically take 2–3 days, while comprehensive projects take up to 2 weeks. I'll provide a clear timeline during our initial consultation.</p>
+                            <p>Project timelines typically range from 2–3 days for small projects up to about 2 weeks for larger ones. I'll provide an agreed timeline during our initial consultation.</p>
                         </div>
                     </div>
 
@@ -570,7 +570,7 @@
                             <span class="accordion-icon" aria-hidden="true">+</span>
                         </button>
                         <div class="accordion-content" id="faq-panel-5" role="region" aria-labelledby="faq-btn-5">
-                            <p>Yes, revisions are included; the number depends on the project scope. I work closely with you to ensure the final design perfectly matches your vision.</p>
+                            <p>Yes, revisions are included. The number of rounds depends on the project scope, and we'll agree on it before starting.</p>
                         </div>
                     </div>
 
@@ -580,7 +580,7 @@
                             <span class="accordion-icon" aria-hidden="true">+</span>
                         </button>
                         <div class="accordion-content" id="faq-panel-6" role="region" aria-labelledby="faq-btn-6">
-                            <p>I work with startups, student organizations, esports teams, creative groups, and small businesses looking to elevate their visual presence.</p>
+                            <p>I've worked with esports teams, student organizations, creative groups, schools and small businesses, and I'm open to other industries. <!-- TODO(owner): confirm or expand --></p>
                         </div>
                     </div>
 
@@ -600,7 +600,7 @@
                             <span class="accordion-icon" aria-hidden="true">+</span>
                         </button>
                         <div class="accordion-content" id="faq-panel-8" role="region" aria-labelledby="faq-btn-8">
-                            <p>Pricing varies by project scope and deliverables. I offer both project-based and retainer options tailored to your specific budget and timeline.</p>
+                            <p>Pricing varies by project scope and deliverables. I offer transparent, project-based pricing tailored to your specific budget and timeline. <!-- TODO(owner): confirm retainers are really offered before adding them --></p>
                         </div>
                     </div>
 
@@ -678,13 +678,13 @@
 
         <div class="overlay-header">
             <div class="overlay-header-left">
-                <h2 id="overlay-title">Project Title</h2>
+                <h2 id="overlay-title"></h2>
                 <div class="overlay-meta">
-                    <span id="overlay-category">Category</span>
+                    <span id="overlay-category"></span>
                     <span class="meta-divider">•</span>
-                    <span id="overlay-year">2024</span>
+                    <span id="overlay-year"></span>
                     <span class="meta-divider">•</span>
-                    <span id="header-counter" class="header-counter">1 / 1</span>
+                    <span id="header-counter" class="header-counter"></span>
                 </div>
             </div>
             <button id="overlay-close" class="overlay-close-btn" aria-label="Close Project Details">

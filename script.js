@@ -213,15 +213,14 @@
         let lastFocusedElement = null;
 
         const projectImageMap = {
-            "West Esports": "Projects/West Esports - Social Media - Organization - 2024 - 2025.png",
-            "Martian Mayhem": "Projects/Martial Mayhem - Social Media - Esports Team - 2024 - 2025.png",
-            "Alima Artists' Group": "Projects/Alima Artists' Group - Brand Identity - Organization - 2024 - 2025.png",
-            "Artlink App": "Projects/Artlink App - Brand Identity - 2025.png",
-            "T-shirt Design": "Projects/T-shirt Designs - 2025.png",
-            "Mel Creatives": "Projects/Mel Creatives - Brand Identity - 2025.png",
-            "Editorial Spread": "Projects/Editorial Spread - Yearbook - 2025.png",
-            "Logo Redesign": "Projects/Logo Design.png",
-            "Social Media": "Projects/West Esports - Social Media - Organization - 2024 - 2025.png"
+            "West Esports": "Stock Images/west-esports.jpg",
+            "Martian Mayhem": "Stock Images/martian-mayhem.jpg",
+            "Alima Artists' Group": "Stock Images/alima-artists-group.jpg",
+            "Artlink App": "Projects/artlink-app.jpg",
+            "T-shirt Design": "Projects/tshirt-designs.jpg",
+            "Mel Creatives": "Projects/mel-creatives.jpg",
+            "Editorial Spread": "Projects/editorial-spread.jpg",
+            "Logo Redesign": "Projects/logo-design.jpg"
         };
 
         // Collect Featured projects
@@ -245,8 +244,8 @@
             });
         });
 
-        // Collect Recent projects
-        document.querySelectorAll('.project-card').forEach(item => {
+        // Collect Recent projects (excluding placeholders)
+        document.querySelectorAll('.project-card:not([data-placeholder="true"])').forEach(item => {
             const title = item.getAttribute('data-title') || item.querySelector('.project-title')?.innerText || 'Project';
             const category = item.getAttribute('data-category') || item.querySelector('.project-category')?.innerText || 'Design';
             const year = item.getAttribute('data-year') || item.querySelector('.project-date')?.innerText || '2025';
@@ -353,7 +352,7 @@
                             </div>
                             <div class="library-info">
                                 <h3>${design.title}</h3>
-                                <p style="font-size: 0.9rem; color: #888; margin: 5px 0;">${design.year} • ${design.tags}</p>
+                                <p class="library-meta">${design.year} • ${design.tags}</p>
                                 <a href="${design.link}" class="library-link" target="_blank" rel="noopener noreferrer">View Figma Project ↗</a>
                             </div>
                         `;
@@ -363,16 +362,11 @@
                     overlayContainer.appendChild(libraryGrid);
                 } else {
                     const wrapper = document.createElement('div');
-                    wrapper.style.width = '100%';
-                    wrapper.style.maxWidth = '1400px';
-                    wrapper.style.margin = '0 auto';
+                    wrapper.className = 'overlay-image-wrapper';
 
                     if (project.description) {
                         const desc = document.createElement('p');
-                        desc.style.color = '#ccc';
-                        desc.style.fontSize = '1.05rem';
-                        desc.style.marginBottom = '20px';
-                        desc.style.textAlign = 'center';
+                        desc.className = 'overlay-description';
                         desc.textContent = project.description;
                         wrapper.appendChild(desc);
                     }
@@ -380,11 +374,7 @@
                     const img = document.createElement('img');
                     img.src = project.image;
                     img.alt = `${project.title} detailed preview`;
-                    img.classList.add('overlay-slide');
-                    img.style.width = '100%';
-                    img.style.height = 'auto';
-                    img.style.objectFit = 'contain';
-                    img.style.display = 'block';
+                    img.className = 'overlay-slide';
 
                     wrapper.appendChild(img);
                     overlayContainer.appendChild(wrapper);
